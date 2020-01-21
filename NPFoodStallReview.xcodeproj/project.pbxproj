@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47400CBFB32141599B4D3012 /* Pods_NPFoodStallReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */; };
+		F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB623D6DCE20017FBE1 /* Stall.swift */; };
+		F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB823D6DCF30017FBE1 /* Canteen.swift */; };
+		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
+		F34ECDBD23D6DD2C0017FBE1 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */; };
+		F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */; };
 		F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1B23D43449005227BF /* AppDelegate.swift */; };
 		F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1D23D43449005227BF /* SceneDelegate.swift */; };
 		F3DEBE2023D43449005227BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1F23D43449005227BF /* ViewController.swift */; };
@@ -16,6 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NPFoodStallReview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B638F86ABDB14A7E9E8879C /* Pods-NPFoodStallReview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.debug.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.debug.xcconfig"; sourceTree = "<group>"; };
+		4413FC884CA687C4F1761171 /* Pods-NPFoodStallReview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.release.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.release.xcconfig"; sourceTree = "<group>"; };
+		F34ECDB623D6DCE20017FBE1 /* Stall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stall.swift; sourceTree = "<group>"; };
+		F34ECDB823D6DCF30017FBE1 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
+		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
+		F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3DEBE1823D43449005227BF /* NPFoodStallReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPFoodStallReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DEBE1B23D43449005227BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3DEBE1D23D43449005227BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -31,17 +45,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47400CBFB32141599B4D3012 /* Pods_NPFoodStallReview.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C011487DF1C50539F52DFAD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2B638F86ABDB14A7E9E8879C /* Pods-NPFoodStallReview.debug.xcconfig */,
+				4413FC884CA687C4F1761171 /* Pods-NPFoodStallReview.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2C80C8CF6B9BB80FDCF9E166 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F3DEBE0F23D43449005227BF = {
 			isa = PBXGroup;
 			children = (
 				F3DEBE1A23D43449005227BF /* NPFoodStallReview */,
 				F3DEBE1923D43449005227BF /* Products */,
+				1C011487DF1C50539F52DFAD /* Pods */,
+				2C80C8CF6B9BB80FDCF9E166 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -63,6 +97,11 @@
 				F3DEBE2423D4344B005227BF /* Assets.xcassets */,
 				F3DEBE2623D4344B005227BF /* LaunchScreen.storyboard */,
 				F3DEBE2923D4344B005227BF /* Info.plist */,
+				F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */,
+				F34ECDB623D6DCE20017FBE1 /* Stall.swift */,
+				F34ECDB823D6DCF30017FBE1 /* Canteen.swift */,
+				F34ECDBA23D6DD1E0017FBE1 /* Item.swift */,
+				F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -74,9 +113,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DEBE2C23D4344B005227BF /* Build configuration list for PBXNativeTarget "NPFoodStallReview" */;
 			buildPhases = (
+				998DE45E686ED48321F581BE /* [CP] Check Pods Manifest.lock */,
 				F3DEBE1423D43449005227BF /* Sources */,
 				F3DEBE1523D43449005227BF /* Frameworks */,
 				F3DEBE1623D43449005227BF /* Resources */,
+				24AA5FB2B90976B804B2F594 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,12 +167,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				F3DEBE2823D4344B005227BF /* LaunchScreen.storyboard in Resources */,
+				F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */,
 				F3DEBE2523D4344B005227BF /* Assets.xcassets in Resources */,
 				F3DEBE2323D43449005227BF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		24AA5FB2B90976B804B2F594 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		998DE45E686ED48321F581BE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NPFoodStallReview-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3DEBE1423D43449005227BF /* Sources */ = {
@@ -140,7 +224,11 @@
 			files = (
 				F3DEBE2023D43449005227BF /* ViewController.swift in Sources */,
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
+				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
+				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
+				F34ECDBD23D6DD2C0017FBE1 /* Feedback.swift in Sources */,
+				F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +370,7 @@
 		};
 		F3DEBE2D23D4344B005227BF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B638F86ABDB14A7E9E8879C /* Pods-NPFoodStallReview.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -300,6 +389,7 @@
 		};
 		F3DEBE2E23D4344B005227BF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4413FC884CA687C4F1761171 /* Pods-NPFoodStallReview.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
