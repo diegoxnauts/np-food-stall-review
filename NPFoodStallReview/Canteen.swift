@@ -7,3 +7,17 @@
 //
 
 import Foundation
+
+class Canteen {
+    var canteenId:String
+    var name:String
+    var longitude:Double
+    var latitude:Double
+    
+    init(canteenId:String, name:String, longitude:Double, latitude:Double) {
+        self.canteenId = canteenId
+        self.name = name
+        self.longitude = longitude
+        self.latitude = latitude
+    }
+}
