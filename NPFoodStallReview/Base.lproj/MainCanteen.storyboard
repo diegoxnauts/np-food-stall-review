@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Canteen-->
+        <scene sceneID="2Nt-Tz-QkV">
+            <objects>
+                <viewController storyboardIdentifier="CanteenPage" id="fYe-aV-wN4" customClass="CanteensViewController" customModule="NPFoodStallReview" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CQ0-JL-3u2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="FFV-kM-mRg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="352"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="352" id="bPM-Ch-93R"/>
+                                </constraints>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pee-83-MqX">
+                                <rect key="frame" x="361" y="35" width="22" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="gear" catalog="system"/>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="NAj-nq-k2x">
+                                <rect key="frame" x="0.0" y="404" width="414" height="409"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CanteenCell" textLabel="vJ5-Pu-W1h" style="IBUITableViewCellStyleDefault" id="VWZ-Mi-Jis">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VWZ-Mi-Jis" id="Tt6-DS-6x5">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vJ5-Pu-W1h">
+                                                    <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="fYe-aV-wN4" id="wLX-Fs-hGZ"/>
+                                    <outlet property="delegate" destination="fYe-aV-wN4" id="dth-Wt-uJB"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Canteens" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mh1-aP-0cd">
+                                <rect key="frame" x="150" y="369" width="114" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="FFV-kM-mRg" firstAttribute="top" secondItem="CQ0-JL-3u2" secondAttribute="top" id="0dh-jD-fp3"/>
+                            <constraint firstItem="FFV-kM-mRg" firstAttribute="trailing" secondItem="KtS-3J-s3h" secondAttribute="trailing" id="17M-cm-FC6"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="NAj-nq-k2x" secondAttribute="bottom" id="L2o-eU-xVj"/>
+                            <constraint firstItem="FFV-kM-mRg" firstAttribute="leading" secondItem="KtS-3J-s3h" secondAttribute="leading" id="Ou5-bs-FxJ"/>
+                            <constraint firstItem="Mh1-aP-0cd" firstAttribute="leading" secondItem="KtS-3J-s3h" secondAttribute="leading" constant="150" id="TZ4-Se-DQE"/>
+                            <constraint firstItem="Mh1-aP-0cd" firstAttribute="top" secondItem="FFV-kM-mRg" secondAttribute="bottom" constant="17" id="fkf-QR-hQe"/>
+                            <constraint firstItem="NAj-nq-k2x" firstAttribute="top" secondItem="Mh1-aP-0cd" secondAttribute="bottom" constant="14" id="kbV-jq-SBv"/>
+                            <constraint firstItem="KtS-3J-s3h" firstAttribute="trailing" secondItem="Mh1-aP-0cd" secondAttribute="trailing" constant="150" id="pDH-Lc-TPf"/>
+                            <constraint firstItem="FFV-kM-mRg" firstAttribute="trailing" secondItem="NAj-nq-k2x" secondAttribute="trailing" id="x8R-ot-fXu"/>
+                            <constraint firstItem="FFV-kM-mRg" firstAttribute="leading" secondItem="NAj-nq-k2x" secondAttribute="leading" id="xMu-bG-5eP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KtS-3J-s3h"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Canteen" id="ALj-Xv-rzY"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="mapView" destination="FFV-kM-mRg" id="vzo-b0-ctB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Swi-3i-nb0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2337.68115942029" y="-302.00892857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="gear" catalog="system" width="64" height="58"/>
+    </resources>
+</document>
