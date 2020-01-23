@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var username: UILabel!
+    
     var canteenController = CanteenController()
     var stallController = StallController()
     var feedbackController = FeedbackController()
@@ -24,6 +27,10 @@ class ViewController: UIViewController {
         //retrieveAllStalls()
         //retrieveStallsByCanteenId(canteenId: "canteen3")
         retrieveItemsByStallId(stallId: "stall1")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        toggleAuthUI()
     }
     
     func displayCanteens() {
@@ -89,6 +96,40 @@ class ViewController: UIViewController {
                     print("Name: \(item.name), Likes: \(item.likes), Price: \(item.price)")
                 }
             }
+        }
+    }
+    
+    @IBAction func btnGoogleSignIn(_ sender: Any) {
+       GIDSignIn.sharedInstance()?.presentingViewController = self
+//
+//       if (AppDelegate.googleUser == nil){
+//           GIDSignIn.sharedInstance().signIn()
+//       } else {
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        if (AppDelegate.googleUser == nil) {
+            GIDSignIn.sharedInstance()?.signIn()
+        }
+        print(AppDelegate.googleUser?.profile.email)
+//       }
+        toggleAuthUI()
+    }
+    
+    @IBAction func SignOut(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        //btnSignIn.isEnabled = true
+        //btnSignOut.isEnabled = false
+        username.text = "Logout"
+    }
+    
+    func toggleAuthUI() {
+        if let _ = GIDSignIn.sharedInstance()?.currentUser?.authentication {
+            username.text = "Hello, \(String((AppDelegate.googleUser?.profile.name)!))."
+            var u:String = (AppDelegate.googleUser?.profile.imageURL(withDimension: 200)!.absoluteString)!
+            //print(u)
+            //let url = URL(string: u)
+            //UserImage.kf.setImage(with: url)
+        } else {
+            username.text = "Please Login"
         }
     }
 }
