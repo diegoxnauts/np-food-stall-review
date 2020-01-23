@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     var canteenController = CanteenController()
     var stallController = StallController()
     var feedbackController = FeedbackController()
+    var itemController = ItemController()
     
     var canteensList:[Canteen] = []
 
@@ -21,7 +22,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
         //displayCanteens()
         //retrieveAllStalls()
-        retrieveStallsByCanteenId(canteenId: "canteen3")
+        //retrieveStallsByCanteenId(canteenId: "canteen3")
+        retrieveItemsByStallId(stallId: "stall1")
     }
     
     func displayCanteens() {
@@ -74,6 +76,17 @@ class ViewController: UIViewController {
                             feedbackCount += 1
                         }
                     }
+                }
+            }
+        }
+    }
+    
+    func retrieveItemsByStallId(stallId:String) {
+        itemController.retrieveItemsByStallId(stallId: stallId) {(items) -> () in
+            if items.count > 0 {
+                print("Item in \(stallId)")
+                for item in items {
+                    print("Name: \(item.name), Likes: \(item.likes), Price: \(item.price)")
                 }
             }
         }

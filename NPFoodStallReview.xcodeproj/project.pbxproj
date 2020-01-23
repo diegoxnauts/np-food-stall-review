@@ -11,6 +11,7 @@
 		8C5E478823D8897A00F3BE81 /* FeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E478723D8897A00F3BE81 /* FeedbackController.swift */; };
 		8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BB23D82A5B00984017 /* CanteenController.swift */; };
 		8C7476BE23D880DE00984017 /* StallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BD23D880DE00984017 /* StallController.swift */; };
+		8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF83BE523D96CC8007AD0B9 /* ItemController.swift */; };
 		F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB623D6DCE20017FBE1 /* Stall.swift */; };
 		F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB823D6DCF30017FBE1 /* Canteen.swift */; };
 		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
@@ -31,6 +32,7 @@
 		8C5E478723D8897A00F3BE81 /* FeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackController.swift; sourceTree = "<group>"; };
 		8C7476BB23D82A5B00984017 /* CanteenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenController.swift; sourceTree = "<group>"; };
 		8C7476BD23D880DE00984017 /* StallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StallController.swift; sourceTree = "<group>"; };
+		8CF83BE523D96CC8007AD0B9 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		F34ECDB623D6DCE20017FBE1 /* Stall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stall.swift; sourceTree = "<group>"; };
 		F34ECDB823D6DCF30017FBE1 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
 		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				8C7476BB23D82A5B00984017 /* CanteenController.swift */,
 				8C7476BD23D880DE00984017 /* StallController.swift */,
 				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
+				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 			files = (
 				F3DEBE2023D43449005227BF /* ViewController.swift in Sources */,
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
+				8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */,
 				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
