@@ -24,6 +24,7 @@
 		F3DEBE2323D43449005227BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2123D43449005227BF /* Main.storyboard */; };
 		F3DEBE2523D4344B005227BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2423D4344B005227BF /* Assets.xcassets */; };
 		F3DEBE2823D4344B005227BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2623D4344B005227BF /* LaunchScreen.storyboard */; };
+		F3EDCEA423D9888E00667D57 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDCEA323D9888E00667D57 /* MainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		F3DEBE2423D4344B005227BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3DEBE2723D4344B005227BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3DEBE2923D4344B005227BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F3EDCEA323D9888E00667D57 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				8C7476BD23D880DE00984017 /* StallController.swift */,
 				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
 				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
+				F3EDCEA323D9888E00667D57 /* MainController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
 				8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */,
 				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
+				F3EDCEA423D9888E00667D57 /* MainController.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
 				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
