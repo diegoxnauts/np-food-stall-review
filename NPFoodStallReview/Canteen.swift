@@ -13,11 +13,13 @@ class Canteen {
     var name:String
     var longitude:Double
     var latitude:Double
+    var stalls: [Stall] = []
     
-    init(canteenId:String, name:String, longitude:Double, latitude:Double) {
+    init(canteenId:String, name:String, longitude:Double, latitude:Double, stalls:[Stall]) {
         self.canteenId = canteenId
         self.name = name
         self.longitude = longitude
         self.latitude = latitude
+        self.stalls = stalls
     }
 }

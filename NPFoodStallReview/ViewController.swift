@@ -23,26 +23,35 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        //displayCanteens()
+        retrieveCanteens()
         //retrieveAllStalls()
-        //retrieveStallsByCanteenId(canteenId: "canteen3")
-        retrieveItemsByStallId(stallId: "stall1")
+        //retrieveItemsByStallId(stallId: "stall1")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         toggleAuthUI()
     }
     
-    func displayCanteens() {
-        var canteensString = ""
+    func retrieveCanteens() {
         canteenController.retrieveCanteens() {(canteens) -> () in
             if canteens.count > 0 {
                 for canteen in canteens {
-                    canteensString += "Canteen ID: \(canteen.canteenId), Name: \(canteen.name), Longitude: \(canteen.longitude), Latitude: \(canteen.latitude)\n"
+                    self.stallController.retrieveStallsByCanteenId(canteenID: canteen.canteenId) {(stalls) -> () in
+                        if stalls.count > 0 {
+                            canteen.stalls = stalls
+                            for stall in canteen.stalls {
+                                self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId) {(feedbacks) -> () in
+                                    stall.feedbacks = feedbacks
+                                    print("\nCanteen: \(canteen.canteenId)")
+                                    print("Stall: \(stall.stallId)")
+                                    for feedback in stall.feedbacks {
+                                        print("Feedback: \(feedback.message!)")
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                self.canteensList = canteens
-                print("No. of Canteens: \(self.canteensList.count)")
-                print("All Canteens: \n\(canteensString)")
             }
         }
     }
@@ -52,26 +61,6 @@ class ViewController: UIViewController {
             if stalls.count > 0 {
                 for stall in stalls {
                     //Retrieving feedback for the each stall based on StallId
-                    self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId) {(feedbacks) -> () in
-                        if feedbacks.count > 0 {
-                            stall.feedbacks = feedbacks
-                        }
-                        var feedbackCount = 1
-                        print("\nStall ID: \(stall.stallId), Canteen ID: \(stall.canteenId), Name: \(stall.name), Image Name: \(stall.imageName)")
-                        for feedback in stall.feedbacks {
-                            print("Feedback \(feedbackCount): \(feedback.message!)")
-                            feedbackCount += 1
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func retrieveStallsByCanteenId(canteenId:String) {
-        stallController.retrieveStallsByCanteenId(canteenID: canteenId) {(stalls) -> () in
-            if stalls.count > 0 {
-                for stall in stalls {
                     self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId) {(feedbacks) -> () in
                         if feedbacks.count > 0 {
                             stall.feedbacks = feedbacks

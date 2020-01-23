@@ -23,7 +23,7 @@ class CanteenController {
                     let name = canteenInfo["name"] as! String
                     let longitude = canteenInfo["longitude"] as! Double
                     let latitude = canteenInfo["latitude"] as! Double
-                    let canteen = Canteen(canteenId: canteenSnapshot.key, name: name, longitude: longitude, latitude: latitude)
+                    let canteen = Canteen(canteenId: canteenSnapshot.key, name: name, longitude: longitude, latitude: latitude, stalls: [])
                     canteens.append(canteen)
                 }
             }
