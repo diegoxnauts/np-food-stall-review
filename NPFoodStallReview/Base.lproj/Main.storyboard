@@ -14,9 +14,50 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DcE-Ze-joc">
+                                <rect key="frame" x="20" y="74" width="374" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Google Sign In"/>
+                                <connections>
+                                    <action selector="btnGoogleSignIn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uDd-uc-bb1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjv-Vc-CwI">
+                                <rect key="frame" x="20" y="410" width="374" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Google Sign Out"/>
+                                <connections>
+                                    <action selector="SignOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GlV-WP-1Mc"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h0K-aL-efO">
+                                <rect key="frame" x="20" y="149" width="374" height="9"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Pjv-Vc-CwI" secondAttribute="bottom" constant="500" id="O2b-yP-Nqc"/>
+                            <constraint firstItem="h0K-aL-efO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Sp8-4F-iIT"/>
+                            <constraint firstItem="h0K-aL-efO" firstAttribute="top" secondItem="DcE-Ze-joc" secondAttribute="bottom" constant="39" id="Su3-Nn-C4J"/>
+                            <constraint firstItem="DcE-Ze-joc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="V8z-lg-TQR"/>
+                            <constraint firstItem="DcE-Ze-joc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="ZVC-JC-0Fi"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DcE-Ze-joc" secondAttribute="trailing" constant="20" id="ge4-qm-7PC"/>
+                            <constraint firstItem="Pjv-Vc-CwI" firstAttribute="top" secondItem="h0K-aL-efO" secondAttribute="bottom" constant="20" id="hyb-aj-Ava"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Pjv-Vc-CwI" secondAttribute="trailing" constant="20" id="vmP-pJ-LIe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h0K-aL-efO" secondAttribute="trailing" constant="20" id="w7o-Wq-n1z"/>
+                            <constraint firstItem="Pjv-Vc-CwI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yyk-Le-GV1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="username" destination="h0K-aL-efO" id="pAI-Ti-Cdg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
