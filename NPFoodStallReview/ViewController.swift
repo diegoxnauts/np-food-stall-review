@@ -11,11 +11,17 @@ import UIKit
 class ViewController: UIViewController {
 
     var canteenController = CanteenController()
+    var stallController = StallController()
+    var feedbackController = FeedbackController()
+    
+    var canteensList:[Canteen] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        displayCanteens()
+        //displayCanteens()
+        //retrieveAllStalls()
+        retrieveStallsByCanteenId(canteenId: "canteen3")
     }
     
     func displayCanteens() {
@@ -25,7 +31,50 @@ class ViewController: UIViewController {
                 for canteen in canteens {
                     canteensString += "Canteen ID: \(canteen.canteenId), Name: \(canteen.name), Longitude: \(canteen.longitude), Latitude: \(canteen.latitude)\n"
                 }
-                print(canteensString)
+                self.canteensList = canteens
+                print("No. of Canteens: \(self.canteensList.count)")
+                print("All Canteens: \n\(canteensString)")
+            }
+        }
+    }
+    
+    func retrieveAllStalls() {
+        stallController.retrieveStalls() {(stalls) -> () in
+            if stalls.count > 0 {
+                for stall in stalls {
+                    //Retrieving feedback for the each stall based on StallId
+                    self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId) {(feedbacks) -> () in
+                        if feedbacks.count > 0 {
+                            stall.feedbacks = feedbacks
+                        }
+                        var feedbackCount = 1
+                        print("\nStall ID: \(stall.stallId), Canteen ID: \(stall.canteenId), Name: \(stall.name), Image Name: \(stall.imageName)")
+                        for feedback in stall.feedbacks {
+                            print("Feedback \(feedbackCount): \(feedback.message!)")
+                            feedbackCount += 1
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func retrieveStallsByCanteenId(canteenId:String) {
+        stallController.retrieveStallsByCanteenId(canteenID: canteenId) {(stalls) -> () in
+            if stalls.count > 0 {
+                for stall in stalls {
+                    self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId) {(feedbacks) -> () in
+                        if feedbacks.count > 0 {
+                            stall.feedbacks = feedbacks
+                        }
+                        var feedbackCount = 1
+                        print("\nStall ID: \(stall.stallId), Canteen ID: \(stall.canteenId), Name: \(stall.name), Image Name: \(stall.imageName)")
+                        for feedback in stall.feedbacks {
+                            print("Feedback \(feedbackCount): \(feedback.message!)")
+                            feedbackCount += 1
+                        }
+                    }
+                }
             }
         }
     }

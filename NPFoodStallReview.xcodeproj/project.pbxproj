@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		47400CBFB32141599B4D3012 /* Pods_NPFoodStallReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */; };
+		8C5E478823D8897A00F3BE81 /* FeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E478723D8897A00F3BE81 /* FeedbackController.swift */; };
+		8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BB23D82A5B00984017 /* CanteenController.swift */; };
+		8C7476BE23D880DE00984017 /* StallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BD23D880DE00984017 /* StallController.swift */; };
 		F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB623D6DCE20017FBE1 /* Stall.swift */; };
 		F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB823D6DCF30017FBE1 /* Canteen.swift */; };
 		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
@@ -25,6 +28,9 @@
 		0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NPFoodStallReview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B638F86ABDB14A7E9E8879C /* Pods-NPFoodStallReview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.debug.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.debug.xcconfig"; sourceTree = "<group>"; };
 		4413FC884CA687C4F1761171 /* Pods-NPFoodStallReview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.release.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.release.xcconfig"; sourceTree = "<group>"; };
+		8C5E478723D8897A00F3BE81 /* FeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackController.swift; sourceTree = "<group>"; };
+		8C7476BB23D82A5B00984017 /* CanteenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenController.swift; sourceTree = "<group>"; };
+		8C7476BD23D880DE00984017 /* StallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StallController.swift; sourceTree = "<group>"; };
 		F34ECDB623D6DCE20017FBE1 /* Stall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stall.swift; sourceTree = "<group>"; };
 		F34ECDB823D6DCF30017FBE1 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
 		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -102,6 +108,9 @@
 				F34ECDB823D6DCF30017FBE1 /* Canteen.swift */,
 				F34ECDBA23D6DD1E0017FBE1 /* Item.swift */,
 				F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */,
+				8C7476BB23D82A5B00984017 /* CanteenController.swift */,
+				8C7476BD23D880DE00984017 /* StallController.swift */,
+				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -226,7 +235,10 @@
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
 				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
+				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
 				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
+				8C5E478823D8897A00F3BE81 /* FeedbackController.swift in Sources */,
+				8C7476BE23D880DE00984017 /* StallController.swift in Sources */,
 				F34ECDBD23D6DD2C0017FBE1 /* Feedback.swift in Sources */,
 				F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */,
 			);

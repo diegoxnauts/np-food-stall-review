@@ -10,14 +10,16 @@ import Foundation
 
 class Stall {
     var stallId: String
-    var name: String?
-    var imageName: String?
-    var canteenId: String?
+    var name: String
+    var imageName: String
+    var canteenId: String
+    var feedbacks: [Feedback] = []
     
-    var feedbacks: [Feedback]
-    
-    
-    init(stallId: String, name : String,imageName : String, canteenId: String, feedbacks: [Feedback]) {
-        
+    init(stallId: String, name : String, imageName : String, canteenId: String, feedbacks: [Feedback]) {
+        self.stallId = stallId
+        self.name = name
+        self.imageName = imageName
+        self.canteenId = canteenId
+        self.feedbacks = feedbacks
     }
 }
