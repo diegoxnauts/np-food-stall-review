@@ -18,13 +18,15 @@
 		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
 		F34ECDBD23D6DD2C0017FBE1 /* Feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */; };
 		F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */; };
+		F3B9B50623D9A99300A2AFA4 /* TopStallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */; };
+		F3B9B50823D9A9A200A2AFA4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */; };
 		F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1B23D43449005227BF /* AppDelegate.swift */; };
 		F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1D23D43449005227BF /* SceneDelegate.swift */; };
 		F3DEBE2023D43449005227BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1F23D43449005227BF /* ViewController.swift */; };
 		F3DEBE2323D43449005227BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2123D43449005227BF /* Main.storyboard */; };
 		F3DEBE2523D4344B005227BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2423D4344B005227BF /* Assets.xcassets */; };
 		F3DEBE2823D4344B005227BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DEBE2623D4344B005227BF /* LaunchScreen.storyboard */; };
-		F3EDCEA423D9888E00667D57 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDCEA323D9888E00667D57 /* MainController.swift */; };
+		F3EDCEA423D9888E00667D57 /* CanteensViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3EDCEA323D9888E00667D57 /* CanteensViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feedback.swift; sourceTree = "<group>"; };
 		F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStallsViewController.swift; sourceTree = "<group>"; };
+		F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F3DEBE1823D43449005227BF /* NPFoodStallReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPFoodStallReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3DEBE1B23D43449005227BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3DEBE1D23D43449005227BF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +53,7 @@
 		F3DEBE2423D4344B005227BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F3DEBE2723D4344B005227BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3DEBE2923D4344B005227BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F3EDCEA323D9888E00667D57 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		F3EDCEA323D9888E00667D57 /* CanteensViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteensViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +123,9 @@
 				8C7476BD23D880DE00984017 /* StallController.swift */,
 				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
 				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
-				F3EDCEA323D9888E00667D57 /* MainController.swift */,
+				F3EDCEA323D9888E00667D57 /* CanteensViewController.swift */,
+				F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */,
+				F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -263,13 +269,15 @@
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
 				8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */,
 				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
-				F3EDCEA423D9888E00667D57 /* MainController.swift in Sources */,
+				F3EDCEA423D9888E00667D57 /* CanteensViewController.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
 				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
+				F3B9B50823D9A9A200A2AFA4 /* SearchViewController.swift in Sources */,
 				8C5E478823D8897A00F3BE81 /* FeedbackController.swift in Sources */,
 				8C7476BE23D880DE00984017 /* StallController.swift in Sources */,
 				F34ECDBD23D6DD2C0017FBE1 /* Feedback.swift in Sources */,
+				F3B9B50623D9A99300A2AFA4 /* TopStallsViewController.swift in Sources */,
 				F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
