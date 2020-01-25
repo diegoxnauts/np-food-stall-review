@@ -36,5 +36,44 @@ class ItemController {
         })
     }
     
+    //MARK: Retrieve items by stallId using Semaphore method
+    
+    func retrieveItemsByStallId(stallId:String) throws -> [Item] {
+        var isError = false;
+        var items:[Item] = []
+        
+        let semaphore = DispatchSemaphore(value: 0);
+        
+        let database = Database.database()
+        let itemsRef = database.reference(withPath: "items")
+        itemsRef.observeSingleEvent(of: .value, with: {snapshot in
+            for child in snapshot.children.allObjects {
+                let itemSnapshot = child as! DataSnapshot
+                if let itemInfo = itemSnapshot.value as? [String:AnyObject] {
+                    let stallID = itemInfo["stallId"] as! String
+                    if (stallId == stallID) {
+                        let likes = itemInfo["likes"] as! Int
+                        let name = itemInfo["name"] as! String
+                        let price = itemInfo["price"] as! Double
+                        let item = Item(itemId: itemSnapshot.key, likes: likes, name: name, price: price, stallId: stallID)
+                        items.append(item)
+                    }
+                }
+            }
+            semaphore.signal()
+        }, withCancel: {(err) in
+            print("Retrieve Error: \(err)");
+            isError = true;
+            semaphore.signal()
+        })
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        if (isError) {
+            throw FireBaseError.server;
+        }
+        
+        return items;
+    }
     
 }

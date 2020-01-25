@@ -9,6 +9,11 @@
 import UIKit
 import GoogleSignIn
 
+// Own Error Type
+enum FireBaseError: Error {
+    case server
+}
+
 class ViewController: UIViewController {
 
     @IBOutlet weak var username: UILabel!

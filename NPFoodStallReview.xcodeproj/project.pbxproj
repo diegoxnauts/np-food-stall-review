@@ -16,6 +16,7 @@
 		B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */; };
 		B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */; };
 		B89E1C7423DA36490074FAE8 /* MainCanteen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C7223DA36490074FAE8 /* MainCanteen.storyboard */; };
+		F34E957A23DC0B7000BEDA5A /* LocationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34E957923DC0B7000BEDA5A /* LocationDelegate.swift */; };
 		F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB623D6DCE20017FBE1 /* Stall.swift */; };
 		F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB823D6DCF30017FBE1 /* Canteen.swift */; };
 		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
@@ -44,6 +45,7 @@
 		B89E1C6D23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTop.storyboard; sourceTree = "<group>"; };
 		B89E1C6F23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSearch.storyboard; sourceTree = "<group>"; };
 		B89E1C7323DA36490074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainCanteen.storyboard; sourceTree = "<group>"; };
+		F34E957923DC0B7000BEDA5A /* LocationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDelegate.swift; sourceTree = "<group>"; };
 		F34ECDB623D6DCE20017FBE1 /* Stall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stall.swift; sourceTree = "<group>"; };
 		F34ECDB823D6DCF30017FBE1 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
 		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				F34ECDB823D6DCF30017FBE1 /* Canteen.swift */,
 				F34ECDBA23D6DD1E0017FBE1 /* Item.swift */,
 				F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */,
+				F34E957923DC0B7000BEDA5A /* LocationDelegate.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
 				8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */,
 				F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */,
+				F34E957A23DC0B7000BEDA5A /* LocationDelegate.swift in Sources */,
 				F3EDCEA423D9888E00667D57 /* CanteensViewController.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
