@@ -153,6 +153,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Canteens" id="WRJ-Xo-Z3V"/>
                     <connections>
+                        <outlet property="canteensTableView" destination="NAj-nq-k2x" id="zMH-mm-ONL"/>
                         <outlet property="mapView" destination="FFV-kM-mRg" id="vzo-b0-ctB"/>
                     </connections>
                 </viewController>
