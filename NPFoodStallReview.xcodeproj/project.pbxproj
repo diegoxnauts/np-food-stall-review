@@ -13,6 +13,9 @@
 		8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BB23D82A5B00984017 /* CanteenController.swift */; };
 		8C7476BE23D880DE00984017 /* StallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BD23D880DE00984017 /* StallController.swift */; };
 		8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF83BE523D96CC8007AD0B9 /* ItemController.swift */; };
+		B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */; };
+		B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */; };
+		B89E1C7423DA36490074FAE8 /* MainCanteen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C7223DA36490074FAE8 /* MainCanteen.storyboard */; };
 		F34ECDB723D6DCE20017FBE1 /* Stall.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB623D6DCE20017FBE1 /* Stall.swift */; };
 		F34ECDB923D6DCF30017FBE1 /* Canteen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDB823D6DCF30017FBE1 /* Canteen.swift */; };
 		F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F34ECDBA23D6DD1E0017FBE1 /* Item.swift */; };
@@ -38,6 +41,9 @@
 		8C7476BB23D82A5B00984017 /* CanteenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenController.swift; sourceTree = "<group>"; };
 		8C7476BD23D880DE00984017 /* StallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StallController.swift; sourceTree = "<group>"; };
 		8CF83BE523D96CC8007AD0B9 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		B89E1C6D23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTop.storyboard; sourceTree = "<group>"; };
+		B89E1C6F23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSearch.storyboard; sourceTree = "<group>"; };
+		B89E1C7323DA36490074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainCanteen.storyboard; sourceTree = "<group>"; };
 		F34ECDB623D6DCE20017FBE1 /* Stall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stall.swift; sourceTree = "<group>"; };
 		F34ECDB823D6DCF30017FBE1 /* Canteen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canteen.swift; sourceTree = "<group>"; };
 		F34ECDBA23D6DD1E0017FBE1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -106,26 +112,29 @@
 		F3DEBE1A23D43449005227BF /* NPFoodStallReview */ = {
 			isa = PBXGroup;
 			children = (
+				B89E1C7223DA36490074FAE8 /* MainCanteen.storyboard */,
+				B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */,
+				B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */,
+				F3DEBE2123D43449005227BF /* Main.storyboard */,
 				8C2AA5C023D9799500AE421A /* credentials.plist */,
 				F3DEBE1B23D43449005227BF /* AppDelegate.swift */,
 				F3DEBE1D23D43449005227BF /* SceneDelegate.swift */,
 				F3DEBE1F23D43449005227BF /* ViewController.swift */,
-				F3DEBE2123D43449005227BF /* Main.storyboard */,
 				F3DEBE2423D4344B005227BF /* Assets.xcassets */,
 				F3DEBE2623D4344B005227BF /* LaunchScreen.storyboard */,
 				F3DEBE2923D4344B005227BF /* Info.plist */,
 				F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */,
+				8C7476BD23D880DE00984017 /* StallController.swift */,
+				8C7476BB23D82A5B00984017 /* CanteenController.swift */,
+				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
+				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
+				F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */,
+				F3EDCEA323D9888E00667D57 /* CanteensViewController.swift */,
+				F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */,
 				F34ECDB623D6DCE20017FBE1 /* Stall.swift */,
 				F34ECDB823D6DCF30017FBE1 /* Canteen.swift */,
 				F34ECDBA23D6DD1E0017FBE1 /* Item.swift */,
 				F34ECDBC23D6DD2C0017FBE1 /* Feedback.swift */,
-				8C7476BB23D82A5B00984017 /* CanteenController.swift */,
-				8C7476BD23D880DE00984017 /* StallController.swift */,
-				8C5E478723D8897A00F3BE81 /* FeedbackController.swift */,
-				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
-				F3EDCEA323D9888E00667D57 /* CanteensViewController.swift */,
-				F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */,
-				F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -191,8 +200,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B89E1C7423DA36490074FAE8 /* MainCanteen.storyboard in Resources */,
 				F3DEBE2823D4344B005227BF /* LaunchScreen.storyboard in Resources */,
+				B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */,
 				F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */,
+				B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */,
 				8C2AA5C123D9799500AE421A /* credentials.plist in Resources */,
 				F3DEBE2523D4344B005227BF /* Assets.xcassets in Resources */,
 				F3DEBE2323D43449005227BF /* Main.storyboard in Resources */,
@@ -285,6 +297,30 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B89E1C6D23DA206C0074FAE8 /* Base */,
+			);
+			name = MainTop.storyboard;
+			sourceTree = "<group>";
+		};
+		B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B89E1C6F23DA206C0074FAE8 /* Base */,
+			);
+			name = MainSearch.storyboard;
+			sourceTree = "<group>";
+		};
+		B89E1C7223DA36490074FAE8 /* MainCanteen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B89E1C7323DA36490074FAE8 /* Base */,
+			);
+			name = MainCanteen.storyboard;
+			sourceTree = "<group>";
+		};
 		F3DEBE2123D43449005227BF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -426,6 +462,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98B95328KU;
 				INFOPLIST_FILE = NPFoodStallReview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -445,6 +482,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 98B95328KU;
 				INFOPLIST_FILE = NPFoodStallReview/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

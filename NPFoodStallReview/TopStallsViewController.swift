@@ -10,6 +10,23 @@ import Foundation
 import UIKit
 import MapKit
 
+class tStallCell : UITableViewCell{
+
+    @IBOutlet weak var testSwitch: UISwitch!
+    
+    @IBOutlet weak var testLbl: UILabel!
+    
+    
+    @IBAction func testSw(_ sender: Any) {
+    if testSwitch.isOn {
+        testLbl.text = "ON"
+    }
+    else {
+        testLbl.text = "OFF"
+    }
+    }
+}
+
 class TopStallsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var mapView: MKMapView!
@@ -23,8 +40,8 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath)
-        cell.textLabel?.text = "Canteen"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! tStallCell
+    
         return cell
     }
 }
