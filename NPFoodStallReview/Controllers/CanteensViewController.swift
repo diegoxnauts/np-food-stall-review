@@ -23,28 +23,6 @@ struct ExpandableCanteen {
     }
 }
 
-class CanteenHeaderCell : UITableViewCell {
-    @IBOutlet weak var canteenLbl: UILabel!
-    @IBOutlet weak var toggleBtn: UIButton!
-    
-    func setup(expandableCanteen: ExpandableCanteen) {
-        canteenLbl.text = expandableCanteen.canteen.name
-    }
-}
-
-class StallCell : UITableViewCell {
-    
-    @IBOutlet weak var stallIcon: UIImageView!
-    @IBOutlet weak var stallLbl: UILabel!
-    @IBOutlet weak var feedbackBtn: UIButton!
-    @IBOutlet weak var menuBtn: UIButton!
-    
-    func setup(stall: Stall) {
-        stallLbl.text = stall.name
-    }
-    
-}
-
 class CanteensViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
     var canteenController: CanteenController = CanteenController();
