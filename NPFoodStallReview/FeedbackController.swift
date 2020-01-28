@@ -35,7 +35,7 @@ class FeedbackController {
     
     //MARK: Retrieve feedbacks by stallId using Semaphore method
     func retrieveFeedbacksByStallId(stallId:String) throws -> [Feedback] {
-        var isError = false;
+        var isError = false
         var feedbacks:[Feedback] = []
     
         let semaphore = DispatchSemaphore(value: 0);
@@ -67,5 +67,29 @@ class FeedbackController {
         }
         
         return feedbacks;
+    }
+    
+    func addOrUpdateFeedback(newFeedback:Feedback) -> Bool {
+        let semaphore = DispatchSemaphore(value: 0);
+        var success:Bool = true
+        let database = Database.database()
+        let feedbacksRef = database.reference(withPath: "feedbacks/\(newFeedback.stallId!)/\(newFeedback.userId!)")
+        let newFeedbackDictionary = ["message" : newFeedback.message!,
+                                     "name" : newFeedback.name!,
+                                     "rating" : newFeedback.rating!] as [String : Any]
+        feedbacksRef.setValue(newFeedbackDictionary, withCompletionBlock: { err, ref in
+            if let error = err {
+                print("Feedback was not saved: \(error.localizedDescription)")
+                success = false
+                semaphore.signal()
+            } else {
+                print("Feedback saved successfully!")
+                semaphore.signal()
+            }
+        })
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        return success
     }
 }

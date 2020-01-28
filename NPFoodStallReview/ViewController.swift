@@ -103,7 +103,7 @@ class ViewController: UIViewController {
         if (AppDelegate.googleUser == nil) {
             GIDSignIn.sharedInstance()?.signIn()
         }
-        print(AppDelegate.googleUser?.profile.email)
+        print(AppDelegate.googleUser?.profile.email!)
 //       }
         toggleAuthUI()
     }
@@ -113,6 +113,25 @@ class ViewController: UIViewController {
         //btnSignIn.isEnabled = true
         //btnSignOut.isEnabled = false
         username.text = "Logout"
+    }
+    
+    @IBAction func triggerSomething(_ sender: Any) {
+        //Must check whether user is logged in or not, if not will crash
+        DispatchQueue.global(qos: .utility).async {
+            let semaphore = DispatchSemaphore(value: 0);
+            
+            let feedback:Feedback = Feedback(stallId: "stall1", userId: (AppDelegate.googleUser?.userID)!, message: "newjhjh message!", name: (AppDelegate.googleUser?.profile.name)!, rating: 4)
+            let success: Bool = self.feedbackController.addOrUpdateFeedback(newFeedback: feedback)
+            semaphore.signal()
+            semaphore.wait()
+            DispatchQueue.main.async {
+                if success {
+                    print("success")
+                } else {
+                    print("Failed")
+                }
+            }
+        }
     }
     
     func toggleAuthUI() {
