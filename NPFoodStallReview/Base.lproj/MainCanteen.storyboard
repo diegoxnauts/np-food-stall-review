@@ -55,6 +55,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="whx-n0-9xx" firstAttribute="top" secondItem="Tt6-DS-6x5" secondAttribute="topMargin" id="2pc-XX-OcF"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="whx-n0-9xx" secondAttribute="bottom" id="JdQ-MW-G24"/>
@@ -82,7 +83,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="zZb-qY-Oen">
-                                                    <rect key="frame" x="60" y="11" width="183" height="21"/>
+                                                    <rect key="frame" x="60" y="6" width="183" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="183" id="6p6-T5-RkD"/>
                                                         <constraint firstAttribute="height" constant="21" id="D0R-ov-eCI"/>
@@ -103,11 +104,28 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <state key="normal" title="Feedbacks"/>
                                                 </button>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-fk-F4e" customClass="CosmosView" customModule="Cosmos">
+                                                    <rect key="frame" x="59" y="28" width="90" height="14"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                            <integer key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starSize">
+                                                            <real key="value" value="14"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottomMargin" secondItem="zZb-qY-Oen" secondAttribute="bottom" constant="7" id="16t-Yo-r5o"/>
-                                                <constraint firstItem="zZb-qY-Oen" firstAttribute="top" secondItem="tvy-YB-nIC" secondAttribute="topMargin" id="80M-3z-t6g"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zZb-qY-Oen" secondAttribute="bottom" constant="12" id="16t-Yo-r5o"/>
+                                                <constraint firstItem="zZb-qY-Oen" firstAttribute="top" secondItem="tvy-YB-nIC" secondAttribute="topMargin" constant="-5" id="80M-3z-t6g"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="CvV-cx-KJo" secondAttribute="bottom" constant="3" id="FKf-wM-QnO"/>
+                                                <constraint firstItem="Olp-fk-F4e" firstAttribute="leading" secondItem="CvV-cx-KJo" secondAttribute="trailing" constant="8" id="LLt-7V-h9h"/>
+                                                <constraint firstAttribute="bottom" secondItem="Olp-fk-F4e" secondAttribute="bottom" constant="8" id="ecf-4x-jGk"/>
                                                 <constraint firstItem="CvV-cx-KJo" firstAttribute="top" secondItem="tvy-YB-nIC" secondAttribute="topMargin" constant="3" id="mzT-fP-FKn"/>
                                                 <constraint firstItem="CvV-cx-KJo" firstAttribute="leading" secondItem="tvy-YB-nIC" secondAttribute="leadingMargin" constant="15" id="vnG-JO-gbg"/>
                                                 <constraint firstItem="zZb-qY-Oen" firstAttribute="leading" secondItem="CvV-cx-KJo" secondAttribute="trailing" constant="9" id="y7k-me-1SO"/>

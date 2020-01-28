@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 import MapKit
 import CoreLocation
+import Cosmos
 
 struct ExpandableCanteen {
     var isExpanded:Bool
