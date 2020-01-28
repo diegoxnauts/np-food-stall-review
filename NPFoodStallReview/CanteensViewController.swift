@@ -12,6 +12,38 @@ import UIKit
 import MapKit
 import CoreLocation
 
+struct ExpandableCanteen {
+    var isExpanded:Bool
+    var canteen: Canteen
+    
+    init(isExpanded: Bool, canteen: Canteen) {
+        self.isExpanded = isExpanded
+        self.canteen = canteen
+    }
+}
+
+class CanteenHeaderCell : UITableViewCell {
+    @IBOutlet weak var canteenLbl: UILabel!
+    @IBOutlet weak var toggleBtn: UIButton!
+    
+    func setup(expandableCanteen: ExpandableCanteen) {
+        canteenLbl.text = expandableCanteen.canteen.name
+    }
+}
+
+class StallCell : UITableViewCell {
+    
+    @IBOutlet weak var stallIcon: UIImageView!
+    @IBOutlet weak var stallLbl: UILabel!
+    @IBOutlet weak var feedbackBtn: UIButton!
+    @IBOutlet weak var menuBtn: UIButton!
+    
+    func setup(stall: Stall) {
+        stallLbl.text = stall.name
+    }
+    
+}
+
 class CanteensViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
     var canteenController: CanteenController = CanteenController();
@@ -19,6 +51,8 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     var feedbackController: FeedbackController = FeedbackController();
     
     var canteenList: [Canteen] = [];
+    
+    var expandableCanteenList: [ExpandableCanteen] = []
     
     var isMapInitialized = false;
     
@@ -43,12 +77,10 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         canteensTableView.delegate = self;
         mapView.showsUserLocation = true;
         
-        // load the canteens
-        
         DispatchQueue.global(qos: .utility).async { // this line means that this function will run in the background thread which is the utility thread so it wont block the main thread
             let semaphore = DispatchSemaphore(value: 0);
             
-            // Execute functions serially
+            // Fetch Canteens
             do {
                 let canteens = try self.canteenController.retrieveCanteens()
                 self.canteenList = canteens
@@ -57,51 +89,117 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                 print(error);
                 return;
             }
-            
             semaphore.wait();
+            
+            // Fetch Stalls for each canteen
             do {
                 for canteen in self.canteenList {
                     let stalls = try self.stallController.retrieveStallsByCanteenId(canteenID: canteen.canteenId)
                     canteen.stalls = stalls
-                    semaphore.signal()
                 }
+                semaphore.signal()
             } catch {
                 print(error);
                 return;
             }
+            semaphore.wait()
             
+            // Fetch feedback for each stalls, derive stall rating and sort form high - low
+            do {
+                for canteen in self.canteenList {
+                    let stalls = canteen.stalls;
+                    for stall in stalls {
+                        var rating:Double = 0.0;
+                        let feedbacks = try self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId)
+                        stall.feedbacks = feedbacks
+                        for feedback in feedbacks {
+                            rating += feedback.rating!;
+                        }
+                        rating = rating / Double(feedbacks.count);
+                        stall.rating = rating;
+                    }
+                }
+                semaphore.signal();
+            } catch {
+                print(error);
+                return;
+            }
             semaphore.wait()
             
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
+                for canteen in self.canteenList {
+                    self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
+                }
+                dump(self.expandableCanteenList)
                 self.canteensTableView.reloadData();
-                print("Stalls: \(self.canteenList[0].stalls)");
             }
         }
     }
     
-    // MARK: TABLE: Title & Headers
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return nil;
+    // MARK: TABLE: Section Headers
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell") as! CanteenHeaderCell;
+        cell.setup(expandableCanteen: expandableCanteenList[section]);
+        cell.toggleBtn.tag = section;
+        cell.toggleBtn.addTarget(self, action: #selector(toggleSection), for: .touchUpInside)
+        return cell.contentView
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return nil
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell") as! CanteenHeaderCell;
+        
+        return cell.bounds.height;
+    }
+
+    @objc func toggleSection(button: UIButton) {
+        // close
+        let section = button.tag;
+        var indexPaths = [IndexPath]();
+        for row in expandableCanteenList[section].canteen.stalls.indices {
+            //print(section, row);
+            let indexPath = IndexPath(row: row, section: section)
+            indexPaths.append(indexPath)
+        }
+        let isExpanded = expandableCanteenList[section].isExpanded
+        expandableCanteenList[section].isExpanded = !isExpanded
+        
+        if (isExpanded) {
+            button.setImage(UIImage(systemName: "chevron.down"), for: .normal)
+        } else {
+            button.setImage(UIImage(systemName: "chevron.up"), for: .normal)
+        }
+        
+        if isExpanded {
+            canteensTableView.deleteRows(at: indexPaths, with: .fade)
+        } else {
+           canteensTableView.insertRows(at: indexPaths, with: .fade)
+        }
+    }
+    
+    //  MARK: Specify number of Sections
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return expandableCanteenList.count
     }
         
     // MARK: Specify Number of Rows
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return canteenList.count;
+        if !expandableCanteenList[section].isExpanded {
+            return 0
+        }
+        
+        return expandableCanteenList[section].canteen.stalls.count
     }
     
     // MARK: Specify Cell Content
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StallCell", for: indexPath) as! StallCell;
         
-        let canteen = canteenList[indexPath.row];
-        cell.textLabel?.text = canteen.name;
+        let stall = expandableCanteenList[indexPath.section].canteen.stalls[indexPath.row];
+        cell.setup(stall: stall);
         return cell;
     }
     
@@ -111,6 +209,7 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         let canteen = canteenList[indexPath.row];
         
     }*/
+    
     
     // MARK: MAP Functions
     

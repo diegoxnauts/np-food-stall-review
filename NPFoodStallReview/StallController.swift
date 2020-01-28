@@ -23,7 +23,7 @@ class StallController {
                     let canteenId = stallInfo["canteenId"] as! String
                     let imageName = stallInfo["imageName"] as! String
                     let name = stallInfo["name"] as! String
-                    let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [])
+                    let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
                     stalls.append(stall)
                 }
             }
@@ -46,7 +46,7 @@ class StallController {
                     if (canteenID == canteenId) {
                         let imageName = stallInfo["imageName"] as! String
                         let name = stallInfo["name"] as! String
-                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [])
+                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
                         stalls.append(stall)
                     }
                 }
@@ -73,7 +73,7 @@ class StallController {
                     let canteenId = stallInfo["canteenId"] as! String
                     let imageName = stallInfo["imageName"] as! String
                     let name = stallInfo["name"] as! String
-                    let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [])
+                    let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
                     stalls.append(stall)
                 }
             }
@@ -109,7 +109,7 @@ class StallController {
                     if (canteenID == canteenId) {
                         let imageName = stallInfo["imageName"] as! String
                         let name = stallInfo["name"] as! String
-                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [])
+                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
                         stalls.append(stall)
                     }
                 }

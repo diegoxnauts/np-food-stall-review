@@ -14,8 +14,9 @@ class Stall {
     var imageName: String
     var canteenId: String
     var feedbacks: [Feedback] = []
+    var rating: Double?
     
-    init(stallId: String, name : String, imageName : String, canteenId: String, feedbacks: [Feedback]) {
+    init(stallId: String, name : String, imageName : String, canteenId: String, feedbacks: [Feedback], rating: Double?) {
         self.stallId = stallId
         self.name = name
         self.imageName = imageName
