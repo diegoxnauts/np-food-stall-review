@@ -13,6 +13,7 @@ import Cosmos
 class AddUpdateFeedbackViewController:UIViewController {
     
     var feedbackStall : Stall?
+    var feedbackCanteen : Canteen?
     var feedbackController:FeedbackController = FeedbackController()
     
     @IBOutlet weak var txtStallName: UILabel?
@@ -24,11 +25,8 @@ class AddUpdateFeedbackViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        txtStallName!.text = "TEST"
-        
         //Need to check if the user is logged in. If not redirect them to the login page
-        //If user is already logged in, retrieve existing feedback if any. The path should be by stall because the stall may not have any feedbacks yet
-        
+        //If user is already logged in, retrieve existing feedback if any. The path should be by stall because the stall may not have any feedbacks yet=
         var existingFeedback:Feedback? = nil
         DispatchQueue.global(qos: .utility).async {
             let semaphore = DispatchSemaphore(value: 0)
@@ -51,45 +49,22 @@ class AddUpdateFeedbackViewController:UIViewController {
                         semaphore.wait()
                         DispatchQueue.main.async {
                             print("Existing feedback rating: \(existingFeedback!.rating!)")
+                            self.title = "Edit Feedback"
                             self.ratingView!.rating = existingFeedback!.rating!
                             self.txtFeedbackMessage!.text = existingFeedback!.message
                             self.txtStallName!.text = self.feedbackStall?.name
-                            self.txtCanteenName!.text = self.feedbackStall?.canteenId
+                            self.txtCanteenName!.text = self.feedbackCanteen?.name
                         }
                     }
                 } else {
                     print("does not exist")
+                    self.title = "New Feedback"
                     self.ratingView!.rating = 5
                     self.txtStallName!.text = self.feedbackStall?.name
-                    self.txtCanteenName!.text = self.feedbackStall?.canteenId
+                    self.txtCanteenName!.text = self.feedbackCanteen?.name
                 }
             }
         }
-        
-//        DispatchQueue.global(qos: .utility).async {
-//            let semaphore = DispatchSemaphore(value: 0);
-//            do {
-//                existingFeedback = try self.feedbackController.retrieveFeedbackForStallByUserId(stallId: self.feedbackStall!.stallId, userId: (AppDelegate.googleUser?.userID)!)
-//            } catch {
-//                print(error)
-//                return
-//            }
-//            semaphore.wait()
-//            DispatchQueue.main.async {
-//                if existingFeedback == nil {
-//                    self.rating.rating = 5
-//
-//                    self.txtStallName.text = self.feedbackStall?.name
-//                    self.txtCanteenName.text = self.feedbackStall?.canteenId
-//                } else {
-//                    self.rating.rating = existingFeedback!.rating!
-//                    self.txtFeedbackMessage.text = existingFeedback!.message
-//
-//                    self.txtStallName.text = self.feedbackStall?.name
-//                    self.txtCanteenName.text = self.feedbackStall?.canteenId
-//                }
-//            }
-//        }
     }
     
     @IBAction func btnSubmit(_ sender: Any) {
@@ -103,6 +78,8 @@ class AddUpdateFeedbackViewController:UIViewController {
             DispatchQueue.main.async {
                 if success {
                     print("success")
+                    self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                 } else {
                     print("Failed")
                 }

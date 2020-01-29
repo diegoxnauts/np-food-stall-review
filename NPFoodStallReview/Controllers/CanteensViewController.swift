@@ -201,6 +201,9 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         let stall = expandableCanteenList[indexPath.section].canteen.stalls[indexPath.row];
         
         cell.setup(stall: stall);
+        cell.feedbackBtn.tag = indexPath.row
+        cell.feedbackBtn.accessibilityIdentifier = "\(indexPath.section)"
+        
         return cell;
     }
     
@@ -235,5 +238,20 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         latitudinalMeters: regionRadius,
         longitudinalMeters: regionRadius)
         self.mapView.setRegion(coordinateRegion, animated: true)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ToViewFeedbackPage") {
+            let parentVC = segue.destination as! UINavigationController
+            let destVC = parentVC.topViewController as! FeedbacksViewController
+            let senderCell = sender as! UIButton
+            let canteenIndex = Int(senderCell.accessibilityIdentifier!)!
+            let stallIndex = senderCell.tag
+            let stall = expandableCanteenList[canteenIndex].canteen.stalls[stallIndex]
+            let canteen = canteenList[canteenIndex]
+//            print("CanteenID: \(stall.canteenId), Name: \(stall.name), Rating: \(stall.rating), StallID: \(stall.stallId)")
+            destVC.selectedStall = stall
+            destVC.selectedCanteen = canteen
+        }
     }
 }
