@@ -17,16 +17,16 @@ class StallCell : UITableViewCell {
     @IBOutlet weak var feedbackBtn: UIButton!
     @IBOutlet weak var menuBtn: UIButton!
     @IBOutlet weak var ratingView: CosmosView!
-//    @IBOutlet weak var ratingNo: UILabel!
+    @IBOutlet weak var ratingNo: UILabel!
     
     func setup(stall: Stall) {
         stallLbl.text = stall.name;
         if (stall.rating != nil) {
             ratingView.rating = stall.rating!
-//            ratingNo.text = "(\(stall.feedbacks.count))";
+            ratingNo.text = "(\(stall.feedbacks.count))";
         } else {
             ratingView.rating = 0;
-//            ratingNo.text = "(0)";
+            ratingNo.text = "(0)";
         }
     }
     
