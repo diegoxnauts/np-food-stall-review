@@ -115,6 +115,12 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
+        self.canteensTableView.reloadData();
+    }
+    
+    
     // MARK: TABLE: Section Headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 
@@ -178,6 +184,7 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "StallCell", for: indexPath) as! StallCell;
         
         let stall = expandableCanteenList[indexPath.section].canteen.stalls[indexPath.row];
+        
         cell.setup(stall: stall);
         return cell;
     }

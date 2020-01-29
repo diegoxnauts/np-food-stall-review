@@ -13,6 +13,7 @@ class CanteenHeaderCell : UITableViewCell {
     @IBOutlet weak var canteenLbl: UILabel!
     @IBOutlet weak var toggleBtn: UIButton!
     
+    
     func setup(expandableCanteen: ExpandableCanteen) {
         canteenLbl.text = expandableCanteen.canteen.name
     }
