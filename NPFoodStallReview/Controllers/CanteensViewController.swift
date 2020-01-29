@@ -35,8 +35,11 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     
     var isMapInitialized = false;
     
+    var isFetching:Bool = false;
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var canteensTableView: UITableView!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     let locationDelegate = LocationDelegate()
     
@@ -55,8 +58,23 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         locationManager.delegate = locationDelegate;
         canteensTableView.delegate = self;
         mapView.showsUserLocation = true;
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated);
         
-        DispatchQueue.global(qos: .utility).async { // this line means that this function will run in the background thread which is the utility thread so it wont block the main thread
+        // So tableview would refresh the data and not add duplicate items
+        canteenList.removeAll();
+        expandableCanteenList.removeAll();
+        self.canteensTableView.reloadData();
+        
+        // Indicate fetching is ongoing
+        loadingIndicator.startAnimating();
+        print("Async call started");
+        
+        // This line means that this function will run in the background thread which is the utility thread so it wont block the main thread
+        DispatchQueue.global(qos: .utility).async {
+            
             let semaphore = DispatchSemaphore(value: 0);
             
             // Fetch Canteens
@@ -109,15 +127,12 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                 for canteen in self.canteenList {
                     self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
                 }
-                dump(self.expandableCanteenList)
+                self.loadingIndicator.stopAnimating();
+                print("Async call done");
+                self.isFetching = false;
                 self.canteensTableView.reloadData();
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated);
-        self.canteensTableView.reloadData();
     }
     
     

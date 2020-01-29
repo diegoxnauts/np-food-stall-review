@@ -104,7 +104,7 @@
                                                         <segue destination="3R9-zH-ivo" kind="show" id="jnX-qO-Sbg"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-fk-F4e" customClass="CosmosView" customModule="Cosmos">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Olp-fk-F4e" customClass="CosmosView" customModule="Cosmos">
                                                     <rect key="frame" x="59" y="28" width="90" height="14"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <userDefinedRuntimeAttributes>
@@ -161,6 +161,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" image="gear" catalog="system"/>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sOg-44-vT2">
+                                <rect key="frame" x="233" y="369" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -176,6 +180,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="canteensTableView" destination="NAj-nq-k2x" id="rfl-if-eeF"/>
+                        <outlet property="loadingIndicator" destination="sOg-44-vT2" id="xer-ae-yw5"/>
                         <outlet property="mapView" destination="FFV-kM-mRg" id="vzo-b0-ctB"/>
                     </connections>
                 </viewController>
