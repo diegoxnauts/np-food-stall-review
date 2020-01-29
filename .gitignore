@@ -2,3 +2,7 @@
 project.xcworkspace/
 xcuserdata/
 .DS_Store
+*.xcworkspacedata
+*.xcscheme
+xcschememanagement.plist
+*.xcbkptlist
