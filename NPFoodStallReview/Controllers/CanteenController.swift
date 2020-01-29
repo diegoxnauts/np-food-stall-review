@@ -45,7 +45,7 @@ class CanteenController {
         
         let database = Database.database()
         let canteensRef = database.reference(withPath: "canteens")
-        canteensRef.observe(.value , with: {snapshot in
+        canteensRef.observeSingleEvent(of: .value , with: {snapshot in
             for child in snapshot.children.allObjects {
                 let canteenSnapshot = child as! DataSnapshot
                 if let canteenInfo = canteenSnapshot.value as? [String:AnyObject] {

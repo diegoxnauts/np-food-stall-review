@@ -101,7 +101,7 @@ class StallController {
         
         let database = Database.database()
         let stallsRef = database.reference(withPath: "stalls")
-        stallsRef.observe(.value, with: {snapshot in
+        stallsRef.observeSingleEvent(of: .value, with: {snapshot in
             for child in snapshot.children.allObjects {
                 let stallSnapshot = child as! DataSnapshot
                 if let stallInfo = stallSnapshot.value as? [String:AnyObject] {
