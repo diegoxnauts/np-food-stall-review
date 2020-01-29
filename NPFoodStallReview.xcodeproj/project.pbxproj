@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		47400CBFB32141599B4D3012 /* Pods_NPFoodStallReview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE087D8D82E03874AD1E925 /* Pods_NPFoodStallReview.framework */; };
 		8C2AA5C123D9799500AE421A /* credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C2AA5C023D9799500AE421A /* credentials.plist */; };
-		8C527A6D23E00F8900E063AD /* MainAddUpdateFeedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C527A6C23E00F8900E063AD /* MainAddUpdateFeedback.storyboard */; };
 		8C527A6F23E0135300E063AD /* AddUpdateFeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C527A6E23E0135300E063AD /* AddUpdateFeedbackViewController.swift */; };
 		8C5E478823D8897A00F3BE81 /* FeedbackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5E478723D8897A00F3BE81 /* FeedbackController.swift */; };
 		8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BB23D82A5B00984017 /* CanteenController.swift */; };
 		8C7476BE23D880DE00984017 /* StallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7476BD23D880DE00984017 /* StallController.swift */; };
+		8CEA207123E092FF008685CD /* FeedbacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA207023E092FF008685CD /* FeedbacksViewController.swift */; };
+		8CEA207423E09595008685CD /* MainAddUpdateFeedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CEA207223E09595008685CD /* MainAddUpdateFeedback.storyboard */; };
 		8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF83BE523D96CC8007AD0B9 /* ItemController.swift */; };
 		B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */; };
 		B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */; };
@@ -42,11 +43,12 @@
 		2B638F86ABDB14A7E9E8879C /* Pods-NPFoodStallReview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.debug.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.debug.xcconfig"; sourceTree = "<group>"; };
 		4413FC884CA687C4F1761171 /* Pods-NPFoodStallReview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NPFoodStallReview.release.xcconfig"; path = "Target Support Files/Pods-NPFoodStallReview/Pods-NPFoodStallReview.release.xcconfig"; sourceTree = "<group>"; };
 		8C2AA5C023D9799500AE421A /* credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = credentials.plist; sourceTree = "<group>"; };
-		8C527A6C23E00F8900E063AD /* MainAddUpdateFeedback.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainAddUpdateFeedback.storyboard; sourceTree = "<group>"; };
 		8C527A6E23E0135300E063AD /* AddUpdateFeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUpdateFeedbackViewController.swift; sourceTree = "<group>"; };
 		8C5E478723D8897A00F3BE81 /* FeedbackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackController.swift; sourceTree = "<group>"; };
 		8C7476BB23D82A5B00984017 /* CanteenController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanteenController.swift; sourceTree = "<group>"; };
 		8C7476BD23D880DE00984017 /* StallController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StallController.swift; sourceTree = "<group>"; };
+		8CEA207023E092FF008685CD /* FeedbacksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksViewController.swift; sourceTree = "<group>"; };
+		8CEA207323E09595008685CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainAddUpdateFeedback.storyboard; sourceTree = "<group>"; };
 		8CF83BE523D96CC8007AD0B9 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
 		B89E1C6D23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTop.storyboard; sourceTree = "<group>"; };
 		B89E1C6F23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSearch.storyboard; sourceTree = "<group>"; };
@@ -131,7 +133,9 @@
 				8CF83BE523D96CC8007AD0B9 /* ItemController.swift */,
 				8C7476BB23D82A5B00984017 /* CanteenController.swift */,
 				8C7476BD23D880DE00984017 /* StallController.swift */,
+				8C527A6E23E0135300E063AD /* AddUpdateFeedbackViewController.swift */,
 				F3DEBE1F23D43449005227BF /* ViewController.swift */,
+				8CEA207023E092FF008685CD /* FeedbacksViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -139,6 +143,7 @@
 		F314FC5323E050DF000BE91A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				8CEA207223E09595008685CD /* MainAddUpdateFeedback.storyboard */,
 				F3DEBE2623D4344B005227BF /* LaunchScreen.storyboard */,
 				F3DEBE2123D43449005227BF /* Main.storyboard */,
 				B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */,
@@ -180,8 +185,6 @@
 				F3DEBE2923D4344B005227BF /* Info.plist */,
 				F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */,
 				F34E957923DC0B7000BEDA5A /* LocationDelegate.swift */,
-				8C527A6C23E00F8900E063AD /* MainAddUpdateFeedback.storyboard */,
-				8C527A6E23E0135300E063AD /* AddUpdateFeedbackViewController.swift */,
 			);
 			path = NPFoodStallReview;
 			sourceTree = "<group>";
@@ -247,12 +250,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CEA207423E09595008685CD /* MainAddUpdateFeedback.storyboard in Resources */,
 				B89E1C7423DA36490074FAE8 /* MainCanteen.storyboard in Resources */,
 				F3DEBE2823D4344B005227BF /* LaunchScreen.storyboard in Resources */,
 				B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */,
 				F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */,
 				B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */,
-				8C527A6D23E00F8900E063AD /* MainAddUpdateFeedback.storyboard in Resources */,
 				8C2AA5C123D9799500AE421A /* credentials.plist in Resources */,
 				F3DEBE2523D4344B005227BF /* Assets.xcassets in Resources */,
 				F3DEBE2323D43449005227BF /* Main.storyboard in Resources */,
@@ -333,6 +336,7 @@
 				F34E957A23DC0B7000BEDA5A /* LocationDelegate.swift in Sources */,
 				F3EDCEA423D9888E00667D57 /* CanteensViewController.swift in Sources */,
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
+				8CEA207123E092FF008685CD /* FeedbacksViewController.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
 				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
 				F3B9B50823D9A9A200A2AFA4 /* SearchViewController.swift in Sources */,
@@ -349,6 +353,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8CEA207223E09595008685CD /* MainAddUpdateFeedback.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CEA207323E09595008685CD /* Base */,
+			);
+			name = MainAddUpdateFeedback.storyboard;
+			sourceTree = "<group>";
+		};
 		B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
