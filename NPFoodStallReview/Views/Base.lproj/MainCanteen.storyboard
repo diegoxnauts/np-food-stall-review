@@ -119,6 +119,13 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="RatingNo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRw-YR-xQV">
+                                                    <rect key="frame" x="154" y="28" width="49" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="zZb-qY-Oen" secondAttribute="bottom" constant="12" id="16t-Yo-r5o"/>
@@ -134,6 +141,7 @@
                                         <connections>
                                             <outlet property="feedbackBtn" destination="1BB-D5-AKC" id="aoE-mu-cTo"/>
                                             <outlet property="menuBtn" destination="jGt-iY-ldK" id="P6Z-z7-jr7"/>
+                                            <outlet property="ratingNo" destination="FRw-YR-xQV" id="27h-AQ-j7h"/>
                                             <outlet property="ratingView" destination="Olp-fk-F4e" id="Ec4-6W-3Tc"/>
                                             <outlet property="stallIcon" destination="CvV-cx-KJo" id="iXc-h7-420"/>
                                             <outlet property="stallLbl" destination="zZb-qY-Oen" id="VEo-eh-eFh"/>
@@ -161,6 +169,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" image="gear" catalog="system"/>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sOg-44-vT2">
+                                <rect key="frame" x="233" y="369" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -176,6 +188,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="canteensTableView" destination="NAj-nq-k2x" id="rfl-if-eeF"/>
+                        <outlet property="loadingIndicator" destination="sOg-44-vT2" id="xer-ae-yw5"/>
                         <outlet property="mapView" destination="FFV-kM-mRg" id="vzo-b0-ctB"/>
                     </connections>
                 </viewController>
