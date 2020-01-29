@@ -125,6 +125,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Add / Update Feedback"/>
                             <connections>
+                                <action selector="btnAddUpdateFeedback:" destination="lcf-3k-jil" eventType="touchUpInside" id="Zyw-S9-SWp"/>
                                 <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="WWX-hZ-kQL"/>
                             </connections>
                         </button>

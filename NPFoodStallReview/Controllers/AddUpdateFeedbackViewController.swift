@@ -24,11 +24,9 @@ class AddUpdateFeedbackViewController:UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        txtStallName!.text = "TEST"
-        
         //Need to check if the user is logged in. If not redirect them to the login page
         //If user is already logged in, retrieve existing feedback if any. The path should be by stall because the stall may not have any feedbacks yet
-        
+        feedbackStall = AppDelegate.feedbackStall
         var existingFeedback:Feedback? = nil
         DispatchQueue.global(qos: .utility).async {
             let semaphore = DispatchSemaphore(value: 0)
