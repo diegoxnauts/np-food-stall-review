@@ -33,6 +33,26 @@ class FeedbackController {
         })
     }
     
+    func checkIfFeedbackForStallExists(stallId:String) -> Bool {
+        let semaphore = DispatchSemaphore(value: 0);
+        var exists:Bool = false
+        let database = Database.database()
+        let feedbacksRef = database.reference(withPath: "feedbacks/")
+        feedbacksRef.observeSingleEvent(of: .value, with: {snapshot in
+            if snapshot.hasChild("\(stallId)") {
+                exists = true
+            }
+            semaphore.signal()
+        }, withCancel: {(err) in
+                print("Retrieve Error: \(err)")
+                semaphore.signal()
+        })
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        return exists
+    }
+    
     //MARK: Retrieve feedbacks by stallId using Semaphore method
     func retrieveFeedbacksByStallId(stallId:String) throws -> [Feedback] {
         var isError = false
