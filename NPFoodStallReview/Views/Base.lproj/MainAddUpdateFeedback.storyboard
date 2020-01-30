@@ -45,20 +45,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your feedback (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSI-WX-Swg">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your feedback (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSI-WX-Swg">
                                 <rect key="frame" x="70" y="372" width="274" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEt-gG-iFs">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WEt-gG-iFs">
                                 <rect key="frame" x="150" y="466" width="114" height="30"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
                                     <action selector="btnSubmit:" destination="cJs-NG-afF" eventType="touchUpInside" id="kYi-tP-kxR"/>
                                 </connections>
                             </button>
-                            <view contentMode="center" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z5X-sg-pn9" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="110" y="307" width="194" height="30"/>
+                            <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="z5X-sg-pn9" customClass="CosmosView" customModule="Cosmos">
+                                <rect key="frame" x="122" y="307" width="170" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -77,6 +77,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="CSI-WX-Swg" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="70" id="0MK-dG-tuG"/>
+                            <constraint firstItem="z5X-sg-pn9" firstAttribute="centerX" secondItem="mCH-g9-ZIG" secondAttribute="centerX" id="3FF-w4-tYU"/>
                             <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="WEt-gG-iFs" secondAttribute="trailing" constant="150" id="68K-i5-QTP"/>
                             <constraint firstItem="CSI-WX-Swg" firstAttribute="top" secondItem="z5X-sg-pn9" secondAttribute="bottom" constant="35" id="6qb-WC-eb0"/>
                             <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="CSI-WX-Swg" secondAttribute="trailing" constant="70" id="E8i-cS-CLj"/>
@@ -84,8 +85,6 @@
                             <constraint firstItem="Our-ip-LRY" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="70" id="LIm-EU-0PT"/>
                             <constraint firstItem="lsm-YG-OWh" firstAttribute="top" secondItem="36E-DA-EKK" secondAttribute="bottom" constant="20" id="Rq0-MA-oR9"/>
                             <constraint firstItem="Our-ip-LRY" firstAttribute="top" secondItem="iEA-Fg-ElV" secondAttribute="top" constant="100" id="SDC-go-GTG"/>
-                            <constraint firstItem="z5X-sg-pn9" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="110" id="SWW-Rr-L5d"/>
-                            <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="z5X-sg-pn9" secondAttribute="trailing" constant="110" id="Sit-gN-3S0"/>
                             <constraint firstItem="3Vg-Ad-Vs4" firstAttribute="top" secondItem="zyk-k9-Xs7" secondAttribute="bottom" constant="60" id="Ue8-bv-Jpl"/>
                             <constraint firstItem="zyk-k9-Xs7" firstAttribute="top" secondItem="Our-ip-LRY" secondAttribute="bottom" constant="20" id="V4I-TL-nih"/>
                             <constraint firstItem="36E-DA-EKK" firstAttribute="top" secondItem="iEA-Fg-ElV" secondAttribute="top" constant="100" id="YUU-YC-a3q"/>
