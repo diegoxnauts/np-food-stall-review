@@ -58,7 +58,7 @@
                                 </connections>
                             </button>
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="z5X-sg-pn9" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="110" y="307" width="194" height="30"/>
+                                <rect key="frame" x="122" y="307" width="170" height="30"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -77,6 +77,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="CSI-WX-Swg" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="70" id="0MK-dG-tuG"/>
+                            <constraint firstItem="z5X-sg-pn9" firstAttribute="centerX" secondItem="mCH-g9-ZIG" secondAttribute="centerX" id="3FF-w4-tYU"/>
                             <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="WEt-gG-iFs" secondAttribute="trailing" constant="150" id="68K-i5-QTP"/>
                             <constraint firstItem="CSI-WX-Swg" firstAttribute="top" secondItem="z5X-sg-pn9" secondAttribute="bottom" constant="35" id="6qb-WC-eb0"/>
                             <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="CSI-WX-Swg" secondAttribute="trailing" constant="70" id="E8i-cS-CLj"/>
@@ -84,8 +85,6 @@
                             <constraint firstItem="Our-ip-LRY" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="70" id="LIm-EU-0PT"/>
                             <constraint firstItem="lsm-YG-OWh" firstAttribute="top" secondItem="36E-DA-EKK" secondAttribute="bottom" constant="20" id="Rq0-MA-oR9"/>
                             <constraint firstItem="Our-ip-LRY" firstAttribute="top" secondItem="iEA-Fg-ElV" secondAttribute="top" constant="100" id="SDC-go-GTG"/>
-                            <constraint firstItem="z5X-sg-pn9" firstAttribute="leading" secondItem="iEA-Fg-ElV" secondAttribute="leading" constant="110" id="SWW-Rr-L5d"/>
-                            <constraint firstItem="iEA-Fg-ElV" firstAttribute="trailing" secondItem="z5X-sg-pn9" secondAttribute="trailing" constant="110" id="Sit-gN-3S0"/>
                             <constraint firstItem="3Vg-Ad-Vs4" firstAttribute="top" secondItem="zyk-k9-Xs7" secondAttribute="bottom" constant="60" id="Ue8-bv-Jpl"/>
                             <constraint firstItem="zyk-k9-Xs7" firstAttribute="top" secondItem="Our-ip-LRY" secondAttribute="bottom" constant="20" id="V4I-TL-nih"/>
                             <constraint firstItem="36E-DA-EKK" firstAttribute="top" secondItem="iEA-Fg-ElV" secondAttribute="top" constant="100" id="YUU-YC-a3q"/>
@@ -120,22 +119,42 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gpu-iu-dqf">
-                            <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Add / Update Feedback"/>
-                            <connections>
-                                <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="WWX-hZ-kQL"/>
-                            </connections>
-                        </button>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackCell" id="vBQ-40-Cbx">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackCell" rowHeight="68" id="vBQ-40-Cbx" customClass="FeedbackTableViewCell" customModule="NPFoodStallReview" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBQ-40-Cbx" id="XDn-kM-MpU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GR-Q6-qUw" customClass="CosmosView" customModule="Cosmos">
+                                            <rect key="frame" x="25" y="12" width="120" height="23"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQx-ob-D5g">
+                                            <rect key="frame" x="25" y="37" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="yQx-ob-D5g" secondAttribute="bottom" constant="10" id="6cl-5H-phU"/>
+                                        <constraint firstItem="0GR-Q6-qUw" firstAttribute="top" secondItem="XDn-kM-MpU" secondAttribute="top" constant="12" id="DWj-oW-apU"/>
+                                        <constraint firstItem="0GR-Q6-qUw" firstAttribute="leading" secondItem="XDn-kM-MpU" secondAttribute="leading" constant="25" id="EfZ-B7-2EP"/>
+                                        <constraint firstItem="yQx-ob-D5g" firstAttribute="leading" secondItem="XDn-kM-MpU" secondAttribute="leading" constant="25" id="Q0V-nm-hgZ"/>
+                                        <constraint firstItem="yQx-ob-D5g" firstAttribute="top" secondItem="0GR-Q6-qUw" secondAttribute="bottom" constant="2" id="Yf2-ZZ-rAC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="feedbackCellMessage" destination="yQx-ob-D5g" id="iQE-Xz-KpT"/>
+                                    <outlet property="feedbackCellRating" destination="0GR-Q6-qUw" id="ejS-e1-lib"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -143,11 +162,17 @@
                             <outlet property="delegate" destination="lcf-3k-jil" id="JJP-Mg-otG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feedbacks" id="jZ3-rH-UB4"/>
+                    <navigationItem key="navigationItem" title="Feedbacks" id="Iqm-rd-NtH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ZjZ-QT-Yxy">
+                            <connections>
+                                <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="7CZ-8n-nLj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXM-BL-9p2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-691" y="90"/>
+            <point key="canvasLocation" x="-691.304347826087" y="89.732142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zck-0G-1jf">

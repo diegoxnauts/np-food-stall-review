@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import Cosmos
+
+class FeedbackTableViewCell:UITableViewCell {
+    
+    @IBOutlet weak var feedbackCellMessage: UILabel!
+    @IBOutlet weak var feedbackCellRating: CosmosView!
+}
 
 class FeedbacksViewController:UITableViewController {
     
@@ -16,6 +23,7 @@ class FeedbacksViewController:UITableViewController {
     var selectedCanteen:Canteen?
     var feedbackController = FeedbackController()
     var feedbackList:[Feedback] = []
+    var filteredFeedbackList:[Feedback] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +41,14 @@ class FeedbacksViewController:UITableViewController {
             semaphore.wait()
             
             DispatchQueue.main.async {
+                self.filteredFeedbackList = self.feedbackList
+                var index = 0
+                for feedback in self.filteredFeedbackList {
+                    if (feedback.message == "") {
+                        self.filteredFeedbackList.remove(at: index)
+                    }
+                    index += 1
+                }
                 self.tableView.reloadData()
             }
         }
@@ -52,6 +68,14 @@ class FeedbacksViewController:UITableViewController {
             semaphore.wait()
 
             DispatchQueue.main.async {
+                self.filteredFeedbackList = self.feedbackList
+                var index = 0
+                for feedback in self.filteredFeedbackList {
+                    if (feedback.message == "") {
+                        self.filteredFeedbackList.remove(at: index)
+                    }
+                    index += 1
+                }
                 self.tableView.reloadData()
             }
         }
@@ -63,15 +87,17 @@ class FeedbacksViewController:UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return feedbackList.count
+        return filteredFeedbackList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedbackCell", for: indexPath)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedbackCell", for: indexPath) as! FeedbackTableViewCell
         
-        let feedback = feedbackList[indexPath.row]
-        cell.textLabel!.text = "\(feedback.message!)"
+        let feedback = filteredFeedbackList[indexPath.row]
+        //cell.textLabel!.text = "\(feedback.message!)"
+        cell.feedbackCellMessage?.text = "\(feedback.message!)"
+        cell.feedbackCellRating.rating = feedback.rating!
         
         return cell
     }

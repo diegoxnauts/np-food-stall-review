@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Cosmos
 
-class AddUpdateFeedbackViewController:UIViewController {
+class AddUpdateFeedbackViewController:UIViewController, UITextFieldDelegate {
     
     var feedbackStall : Stall?
     var feedbackCanteen : Canteen?
@@ -24,6 +24,8 @@ class AddUpdateFeedbackViewController:UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        txtFeedbackMessage.delegate = self
         
         //Need to check if the user is logged in. If not redirect them to the login page
         //If user is already logged in, retrieve existing feedback if any. The path should be by stall because the stall may not have any feedbacks yet=
@@ -65,6 +67,11 @@ class AddUpdateFeedbackViewController:UIViewController {
                 }
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func btnSubmit(_ sender: Any) {

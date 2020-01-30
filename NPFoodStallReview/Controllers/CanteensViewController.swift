@@ -12,6 +12,7 @@ import UIKit
 import MapKit
 import CoreLocation
 import Cosmos
+import GoogleSignIn
 
 struct ExpandableCanteen {
     var isExpanded:Bool
@@ -129,7 +130,6 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                 for canteen in self.canteenList {
                     self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
                 }
-                dump(self.canteenList);
                 self.loadingIndicator.stopAnimating();
                 print("Async call done");
                 self.isFetching = false;
@@ -269,5 +269,41 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             destVC.selectedStall = stall
             destVC.selectedCanteen = canteen
         }
+    }
+    
+    @IBAction func loginLogoutBtn(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        if (AppDelegate.googleUser != nil) {
+            logoutAlert()
+        } else {
+            loginAlert()
+        }
+    }
+    
+    func loginAlert() {
+        let alert = UIAlertController(title: "Log In", message: "Would you like to log in?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            GIDSignIn.sharedInstance()?.signIn()
+        })
+        
+        alert.addAction(action)
+        alert.addAction(action2)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func logoutAlert() {
+        let alert = UIAlertController(title: "Log Out", message: "Would you like to log out?", preferredStyle: .alert)
+        let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            GIDSignIn.sharedInstance()?.signOut()
+        })
+        
+        alert.addAction(action)
+        alert.addAction(action2)
+        
+        present(alert, animated: true, completion: nil)
     }
 }
