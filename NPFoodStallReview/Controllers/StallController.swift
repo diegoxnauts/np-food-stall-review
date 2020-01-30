@@ -67,14 +67,16 @@ class StallController {
         let database = Database.database()
         let stallsRef = database.reference(withPath: "stalls")
         stallsRef.observeSingleEvent(of: .value, with: {snapshot in
-            for child in snapshot.children.allObjects {
-                let stallSnapshot = child as! DataSnapshot
-                if let stallInfo = stallSnapshot.value as? [String:AnyObject] {
-                    let canteenId = stallInfo["canteenId"] as! String
-                    let imageName = stallInfo["imageName"] as! String
-                    let name = stallInfo["name"] as! String
-                    let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
-                    stalls.append(stall)
+            if (snapshot.exists()) {
+                for child in snapshot.children.allObjects {
+                    let stallSnapshot = child as! DataSnapshot
+                    if let stallInfo = stallSnapshot.value as? [String:AnyObject] {
+                        let canteenId = stallInfo["canteenId"] as! String
+                        let imageName = stallInfo["imageName"] as! String
+                        let name = stallInfo["name"] as! String
+                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
+                        stalls.append(stall)
+                    }
                 }
             }
             semaphore.signal();
@@ -102,15 +104,17 @@ class StallController {
         let database = Database.database()
         let stallsRef = database.reference(withPath: "stalls")
         stallsRef.observeSingleEvent(of: .value, with: {snapshot in
-            for child in snapshot.children.allObjects {
-                let stallSnapshot = child as! DataSnapshot
-                if let stallInfo = stallSnapshot.value as? [String:AnyObject] {
-                    let canteenId = stallInfo["canteenId"] as! String
-                    if (canteenID == canteenId) {
-                        let imageName = stallInfo["imageName"] as! String
-                        let name = stallInfo["name"] as! String
-                        let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
-                        stalls.append(stall)
+            if (snapshot.exists()) {
+                for child in snapshot.children.allObjects {
+                    let stallSnapshot = child as! DataSnapshot
+                    if let stallInfo = stallSnapshot.value as? [String:AnyObject] {
+                        let canteenId = stallInfo["canteenId"] as! String
+                        if (canteenID == canteenId) {
+                            let imageName = stallInfo["imageName"] as! String
+                            let name = stallInfo["name"] as! String
+                            let stall = Stall(stallId: stallSnapshot.key, name: name, imageName: imageName, canteenId: canteenId, feedbacks: [], rating: nil)
+                            stalls.append(stall)
+                        }
                     }
                 }
             }

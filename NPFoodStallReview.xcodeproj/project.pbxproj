@@ -29,6 +29,7 @@
 		F37AA8AD23D4385100BDBAB1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */; };
 		F3B49F3823E15A39003E203B /* MainItem.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B49F3723E15A39003E203B /* MainItem.storyboard */; };
 		F3B49F3A23E15A78003E203B /* ShowItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B49F3923E15A78003E203B /* ShowItemViewController.swift */; };
+		F3B49F3C23E18D54003E203B /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B49F3B23E18D54003E203B /* ItemCell.swift */; };
 		F3B9B50623D9A99300A2AFA4 /* TopStallsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */; };
 		F3B9B50823D9A9A200A2AFA4 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */; };
 		F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DEBE1B23D43449005227BF /* AppDelegate.swift */; };
@@ -65,6 +66,7 @@
 		F37AA8AC23D4385100BDBAB1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F3B49F3723E15A39003E203B /* MainItem.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainItem.storyboard; sourceTree = "<group>"; };
 		F3B49F3923E15A78003E203B /* ShowItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowItemViewController.swift; sourceTree = "<group>"; };
+		F3B49F3B23E18D54003E203B /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		F3B9B50523D9A99300A2AFA4 /* TopStallsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStallsViewController.swift; sourceTree = "<group>"; };
 		F3B9B50723D9A9A200A2AFA4 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F3DEBE1823D43449005227BF /* NPFoodStallReview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NPFoodStallReview.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -123,6 +125,7 @@
 			children = (
 				F314FC4E23E04DA7000BE91A /* StallCell.swift */,
 				F314FC5423E051C5000BE91A /* CanteenHeaderCell.swift */,
+				F3B49F3B23E18D54003E203B /* ItemCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				F3DEBE1E23D43449005227BF /* SceneDelegate.swift in Sources */,
 				8CEA207123E092FF008685CD /* FeedbacksViewController.swift in Sources */,
 				8C7476BC23D82A5B00984017 /* CanteenController.swift in Sources */,
+				F3B49F3C23E18D54003E203B /* ItemCell.swift in Sources */,
 				F34ECDBB23D6DD1E0017FBE1 /* Item.swift in Sources */,
 				F3B9B50823D9A9A200A2AFA4 /* SearchViewController.swift in Sources */,
 				F314FC4F23E04DA7000BE91A /* StallCell.swift in Sources */,

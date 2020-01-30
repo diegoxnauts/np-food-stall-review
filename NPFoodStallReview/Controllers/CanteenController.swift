@@ -46,14 +46,16 @@ class CanteenController {
         let database = Database.database()
         let canteensRef = database.reference(withPath: "canteens")
         canteensRef.observeSingleEvent(of: .value , with: {snapshot in
-            for child in snapshot.children.allObjects {
-                let canteenSnapshot = child as! DataSnapshot
-                if let canteenInfo = canteenSnapshot.value as? [String:AnyObject] {
-                    let name = canteenInfo["name"] as! String
-                    let longitude = canteenInfo["longitude"] as! Double
-                    let latitude = canteenInfo["latitude"] as! Double
-                    let canteen = Canteen(canteenId: canteenSnapshot.key, name: name, longitude: longitude, latitude: latitude, stalls: [])
-                    canteens.append(canteen)
+            if (snapshot.exists()) {
+                for child in snapshot.children.allObjects {
+                    let canteenSnapshot = child as! DataSnapshot
+                    if let canteenInfo = canteenSnapshot.value as? [String:AnyObject] {
+                        let name = canteenInfo["name"] as! String
+                        let longitude = canteenInfo["longitude"] as! Double
+                        let latitude = canteenInfo["latitude"] as! Double
+                        let canteen = Canteen(canteenId: canteenSnapshot.key, name: name, longitude: longitude, latitude: latitude, stalls: [])
+                        canteens.append(canteen)
+                    }
                 }
             }
             semaphore.signal()

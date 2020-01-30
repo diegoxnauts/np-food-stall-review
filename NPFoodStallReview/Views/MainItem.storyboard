@@ -14,10 +14,103 @@
                     <view key="view" contentMode="scaleToFill" id="Adp-Kc-zQn">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IYL-CG-CwD">
+                                <rect key="frame" x="0.0" y="295" width="414" height="601"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="117" id="FQJ-u7-sl0" customClass="ItemCell" customModule="NPFoodStallReview" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="117"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FQJ-u7-sl0" id="5WS-An-DYo">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="117"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Steamed Chicken Rice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-CL-bzY">
+                                                    <rect key="frame" x="94" y="11" width="305" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1000 Likes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btB-Yj-fzb">
+                                                    <rect key="frame" x="94" y="79" width="83" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dinner" translatesAutoresizingMaskIntoConstraints="NO" id="0hd-PX-YoD">
+                                                    <rect key="frame" x="16" y="31" width="51" height="49"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="0hd-PX-YoD" secondAttribute="height" multiplier="51:49" id="Aq6-Hd-hBn"/>
+                                                        <constraint firstAttribute="height" constant="49" id="HuC-Xl-YRd"/>
+                                                        <constraint firstAttribute="width" constant="51" id="WeW-Nm-skp"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S$ 4.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEB-G5-akK">
+                                                    <rect key="frame" x="94" y="45" width="61" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHV-ib-tPp">
+                                                    <rect key="frame" x="349" y="47" width="22" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <state key="normal" image="hand.thumbsup" catalog="system"/>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5m-ui-3eD">
+                                                    <rect key="frame" x="350" y="50" width="20" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="hand.thumbsup.fill" catalog="system"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="0hd-PX-YoD" firstAttribute="top" secondItem="5WS-An-DYo" secondAttribute="topMargin" constant="20" id="3x9-S2-yg3"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0hd-PX-YoD" secondAttribute="bottom" constant="26" id="XW8-sI-Bhh"/>
+                                                <constraint firstItem="0hd-PX-YoD" firstAttribute="leading" secondItem="5WS-An-DYo" secondAttribute="leadingMargin" id="yIC-O5-nsS"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="itemName" destination="UY3-CL-bzY" id="Bps-dS-OJK"/>
+                                            <outlet property="itemPrice" destination="zEB-G5-akK" id="VjH-ae-SjW"/>
+                                            <outlet property="likeBtn" destination="GHV-ib-tPp" id="Als-Tj-b7V"/>
+                                            <outlet property="likesNo" destination="btB-Yj-fzb" id="FjY-2g-fCL"/>
+                                            <outlet property="unlikeBtn" destination="i5m-ui-3eD" id="Iig-LY-aMq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" translatesAutoresizingMaskIntoConstraints="NO" id="Ttv-cO-mZv">
+                                <rect key="frame" x="130" y="113" width="156" height="141"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Ttv-cO-mZv" secondAttribute="height" multiplier="52:47" id="Uti-9t-aaj"/>
+                                    <constraint firstAttribute="height" constant="141" id="YCp-Ys-e6H"/>
+                                    <constraint firstAttribute="width" constant="156" id="oTl-zH-nou"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Ttv-cO-mZv" firstAttribute="top" secondItem="a97-fD-uhw" secondAttribute="top" constant="25" id="0TG-lR-L7v"/>
+                            <constraint firstItem="a97-fD-uhw" firstAttribute="trailing" secondItem="Ttv-cO-mZv" secondAttribute="trailing" constant="130" id="LJl-nJ-LtD"/>
+                            <constraint firstItem="Ttv-cO-mZv" firstAttribute="leading" secondItem="a97-fD-uhw" secondAttribute="leading" constant="130" id="oiv-10-9Gx"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="a97-fD-uhw"/>
                     </view>
-                    <navigationItem key="navigationItem" id="afT-K0-AMe"/>
+                    <navigationItem key="navigationItem" id="afT-K0-AMe">
+                        <barButtonItem key="rightBarButtonItem" title="Close" image="clear" catalog="system" id="ylb-Rc-6Cw">
+                            <connections>
+                                <action selector="closeBtn:" destination="38Y-d7-ZWd" id="ytE-Mo-uzY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="itemTableView" destination="IYL-CG-CwD" id="f1p-tV-cxd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vQp-Cf-eFD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -42,4 +135,11 @@
             <point key="canvasLocation" x="-549.27536231884062" y="-249.10714285714283"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clear" catalog="system" width="64" height="56"/>
+        <image name="dinner" width="512" height="512"/>
+        <image name="hand.thumbsup" catalog="system" width="64" height="64"/>
+        <image name="hand.thumbsup.fill" catalog="system" width="64" height="62"/>
+        <image name="menu" width="512" height="512"/>
+    </resources>
 </document>

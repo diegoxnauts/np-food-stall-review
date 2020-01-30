@@ -112,7 +112,9 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                         for feedback in feedbacks {
                             rating += feedback.rating!;
                         }
-                        rating = rating / Double(feedbacks.count);
+                        if (feedbacks.count > 0) {
+                            rating = rating / Double(feedbacks.count);
+                        }
                         stall.rating = rating;
                     }
                 }
@@ -127,6 +129,7 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                 for canteen in self.canteenList {
                     self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
                 }
+                dump(self.canteenList);
                 self.loadingIndicator.stopAnimating();
                 print("Async call done");
                 self.isFetching = false;
@@ -204,6 +207,9 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         cell.feedbackBtn.tag = indexPath.row
         cell.feedbackBtn.accessibilityIdentifier = "\(indexPath.section)"
         
+        cell.menuBtn.tag = indexPath.row
+        cell.menuBtn.accessibilityIdentifier = "\(indexPath.section)"
+        
         return cell;
     }
     
@@ -249,7 +255,17 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             let stallIndex = senderCell.tag
             let stall = expandableCanteenList[canteenIndex].canteen.stalls[stallIndex]
             let canteen = canteenList[canteenIndex]
-//            print("CanteenID: \(stall.canteenId), Name: \(stall.name), Rating: \(stall.rating), StallID: \(stall.stallId)")
+            destVC.selectedStall = stall
+            destVC.selectedCanteen = canteen
+            
+        } else if (segue.identifier == "ToViewItemPage") {
+            let parentVC = segue.destination as! UINavigationController
+            let destVC = parentVC.topViewController as! ShowItemViewController
+            let senderCell = sender as! UIButton
+            let canteenIndex = Int(senderCell.accessibilityIdentifier!)!
+            let stallIndex = senderCell.tag
+            let stall = expandableCanteenList[canteenIndex].canteen.stalls[stallIndex]
+            let canteen = canteenList[canteenIndex]
             destVC.selectedStall = stall
             destVC.selectedCanteen = canteen
         }

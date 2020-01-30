@@ -37,20 +37,22 @@ class FeedbackController {
     func retrieveFeedbacksByStallId(stallId:String) throws -> [Feedback] {
         var isError = false
         var feedbacks:[Feedback] = []
-    
+        
         let semaphore = DispatchSemaphore(value: 0);
         
         let database = Database.database()
         let feedbacksRef = database.reference(withPath: "feedbacks/\(stallId)/")
         feedbacksRef.observeSingleEvent(of: .value, with: {snapshot in
-            for child in snapshot.children.allObjects {
-                let feedbackSnapshot = child as! DataSnapshot
-                if let feedbackInfo = feedbackSnapshot.value as? [String:AnyObject] {
-                    let message = feedbackInfo["message"] as! String?
-                    let name = feedbackInfo["name"] as! String?
-                    let rating = feedbackInfo["rating"] as! Double?
-                    let feedback = Feedback(stallId: stallId, userId: feedbackSnapshot.key, message: message!, name: name!, rating: rating!)
-                    feedbacks.append(feedback)
+            if (snapshot.exists()) {
+                for child in snapshot.children.allObjects {
+                    let feedbackSnapshot = child as! DataSnapshot
+                    if let feedbackInfo = feedbackSnapshot.value as? [String:AnyObject] {
+                        let message = feedbackInfo["message"] as! String?
+                        let name = feedbackInfo["name"] as! String?
+                        let rating = feedbackInfo["rating"] as! Double?
+                        let feedback = Feedback(stallId: stallId, userId: feedbackSnapshot.key, message: message!, name: name!, rating: rating!)
+                        feedbacks.append(feedback)
+                    }
                 }
             }
             semaphore.signal()
