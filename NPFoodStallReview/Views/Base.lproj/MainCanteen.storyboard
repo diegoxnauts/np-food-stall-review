@@ -160,14 +160,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pee-83-MqX">
-                                <rect key="frame" x="323" y="44" width="22" height="27"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pee-83-MqX">
+                                <rect key="frame" x="330" y="44" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="22" id="dXr-P9-GQb"/>
-                                    <constraint firstAttribute="height" constant="27" id="v57-Bl-019"/>
+                                    <constraint firstAttribute="width" constant="25" id="Rej-gL-uT2"/>
+                                    <constraint firstAttribute="height" constant="25" id="ayt-vY-zF8"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" image="gear" catalog="system"/>
+                                <state key="normal" image="loginlogout"/>
+                                <connections>
+                                    <action selector="loginLogoutBtn:" destination="fYe-aV-wN4" eventType="touchUpInside" id="M3A-c1-g7i"/>
+                                </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sOg-44-vT2">
                                 <rect key="frame" x="233" y="369" width="20" height="20"/>
@@ -178,9 +181,9 @@
                         <constraints>
                             <constraint firstItem="pee-83-MqX" firstAttribute="top" secondItem="KtS-3J-s3h" secondAttribute="top" id="4vc-PV-aOg"/>
                             <constraint firstItem="FFV-kM-mRg" firstAttribute="trailing" secondItem="KtS-3J-s3h" secondAttribute="trailing" id="JH7-2w-Qqv"/>
+                            <constraint firstItem="KtS-3J-s3h" firstAttribute="trailing" secondItem="pee-83-MqX" secondAttribute="trailing" constant="20" id="Udf-kr-xYP"/>
                             <constraint firstItem="FFV-kM-mRg" firstAttribute="leading" secondItem="KtS-3J-s3h" secondAttribute="leading" id="beb-dL-hxt"/>
                             <constraint firstItem="FFV-kM-mRg" firstAttribute="top" secondItem="CQ0-JL-3u2" secondAttribute="top" id="fpY-7T-3o4"/>
-                            <constraint firstItem="KtS-3J-s3h" firstAttribute="trailing" secondItem="pee-83-MqX" secondAttribute="trailing" constant="30" id="ydT-Cc-AuJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KtS-3J-s3h"/>
                     </view>
@@ -211,6 +214,6 @@
         <image name="canteen" width="512" height="512"/>
         <image name="chevron.down" catalog="system" width="64" height="36"/>
         <image name="fork" width="512" height="511"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="loginlogout" width="512" height="512"/>
     </resources>
 </document>
