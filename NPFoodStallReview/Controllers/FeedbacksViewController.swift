@@ -9,6 +9,13 @@
 import Foundation
 import UIKit
 import GoogleSignIn
+import Cosmos
+
+class FeedbackTableViewCell:UITableViewCell {
+    
+    @IBOutlet weak var feedbackCellMessage: UILabel!
+    @IBOutlet weak var feedbackCellRating: CosmosView!
+}
 
 class FeedbacksViewController:UITableViewController {
     
@@ -85,10 +92,12 @@ class FeedbacksViewController:UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedbackCell", for: indexPath)
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "feedbackCell", for: indexPath) as! FeedbackTableViewCell
         
         let feedback = filteredFeedbackList[indexPath.row]
-        cell.textLabel!.text = "\(feedback.message!)"
+        //cell.textLabel!.text = "\(feedback.message!)"
+        cell.feedbackCellMessage?.text = "\(feedback.message!)"
+        cell.feedbackCellRating.rating = feedback.rating!
         
         return cell
     }

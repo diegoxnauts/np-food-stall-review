@@ -120,13 +120,41 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackCell" id="vBQ-40-Cbx">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackCell" rowHeight="68" id="vBQ-40-Cbx" customClass="FeedbackTableViewCell" customModule="NPFoodStallReview" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="68"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vBQ-40-Cbx" id="XDn-kM-MpU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GR-Q6-qUw" customClass="CosmosView" customModule="Cosmos">
+                                            <rect key="frame" x="25" y="12" width="120" height="23"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="fillMode">
+                                                    <integer key="value" value="1"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQx-ob-D5g">
+                                            <rect key="frame" x="25" y="37" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="yQx-ob-D5g" secondAttribute="bottom" constant="10" id="6cl-5H-phU"/>
+                                        <constraint firstItem="0GR-Q6-qUw" firstAttribute="top" secondItem="XDn-kM-MpU" secondAttribute="top" constant="12" id="DWj-oW-apU"/>
+                                        <constraint firstItem="0GR-Q6-qUw" firstAttribute="leading" secondItem="XDn-kM-MpU" secondAttribute="leading" constant="25" id="EfZ-B7-2EP"/>
+                                        <constraint firstItem="yQx-ob-D5g" firstAttribute="leading" secondItem="XDn-kM-MpU" secondAttribute="leading" constant="25" id="Q0V-nm-hgZ"/>
+                                        <constraint firstItem="yQx-ob-D5g" firstAttribute="top" secondItem="0GR-Q6-qUw" secondAttribute="bottom" constant="2" id="Yf2-ZZ-rAC"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="feedbackCellMessage" destination="yQx-ob-D5g" id="iQE-Xz-KpT"/>
+                                    <outlet property="feedbackCellRating" destination="0GR-Q6-qUw" id="ejS-e1-lib"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -135,7 +163,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Feedbacks" id="Iqm-rd-NtH">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZjZ-QT-Yxy">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ZjZ-QT-Yxy">
                             <connections>
                                 <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="7CZ-8n-nLj"/>
                             </connections>
@@ -144,7 +172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXM-BL-9p2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-691" y="90"/>
+            <point key="canvasLocation" x="-691.304347826087" y="89.732142857142847"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zck-0G-1jf">
