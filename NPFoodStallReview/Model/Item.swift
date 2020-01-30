@@ -10,16 +10,16 @@ import Foundation
 
 class Item {
     var itemId:String
-    var likes:Int
     var name:String
     var price:Double
     var stallId:String
+    var userWhoLike:[String:Bool]
     
-    init(itemId:String, likes:Int, name:String, price:Double, stallId:String) {
+    init(itemId:String, name:String, price:Double, stallId:String, userWhoLike:[String:Bool]) {
         self.itemId = itemId
-        self.likes = likes
         self.name = name
         self.price = price
         self.stallId = stallId
+        self.userWhoLike = userWhoLike
     }
 }

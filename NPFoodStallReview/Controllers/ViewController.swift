@@ -82,17 +82,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func retrieveItemsByStallId(stallId:String) {
-        itemController.retrieveItemsByStallId(stallId: stallId) {(items) -> () in
-            if items.count > 0 {
-                print("Item in \(stallId)")
-                for item in items {
-                    print("Name: \(item.name), Likes: \(item.likes), Price: \(item.price)")
-                }
-            }
-        }
-    }
-    
     @IBAction func btnGoogleSignIn(_ sender: Any) {
        GIDSignIn.sharedInstance()?.presentingViewController = self
 //

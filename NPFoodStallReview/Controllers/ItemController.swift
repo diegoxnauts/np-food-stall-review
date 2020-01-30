@@ -11,30 +11,6 @@ import UIKit
 import FirebaseDatabase
 
 class ItemController {
-    func retrieveItemsByStallId(stallId:String, completion: @escaping([Item]) -> ()) {
-        var items:[Item?] = []
-        
-        let database = Database.database()
-        let itemsRef = database.reference(withPath: "items")
-        itemsRef.observeSingleEvent(of: .value, with: {snapshot in
-            for child in snapshot.children.allObjects {
-                let itemSnapshot = child as! DataSnapshot
-                if let itemInfo = itemSnapshot.value as? [String:AnyObject] {
-                    let stallID = itemInfo["stallId"] as! String
-                    if (stallId == stallID) {
-                        let likes = itemInfo["likes"] as! Int
-                        let name = itemInfo["name"] as! String
-                        let price = itemInfo["price"] as! Double
-                        let item = Item(itemId: itemSnapshot.key, likes: likes, name: name, price: price, stallId: stallID)
-                        items.append(item)
-                    }
-                }
-            }
-            if let itemsList = items as? [Item] {
-                completion(itemsList)
-            }
-        })
-    }
     
     //MARK: Retrieve items by stallId using Semaphore method
     
@@ -53,10 +29,14 @@ class ItemController {
                     if let itemInfo = itemSnapshot.value as? [String:AnyObject] {
                         let stallID = itemInfo["stallId"] as! String
                         if (stallId == stallID) {
-                            let likes = itemInfo["likes"] as! Int
                             let name = itemInfo["name"] as! String
                             let price = itemInfo["price"] as! Double
-                            let item = Item(itemId: itemSnapshot.key, likes: likes, name: name, price: price, stallId: stallID)
+                            // define empty dictionary
+                            var userWhoLikeDict = [String: Bool]();
+                            if let userWhoLike = itemInfo["userWhoLike"] {
+                                userWhoLikeDict = userWhoLike as! [String:Bool];
+                            }
+                            let item = Item(itemId: itemSnapshot.key, name: name, price: price, stallId: stallID, userWhoLike: userWhoLikeDict)
                             items.append(item)
                         }
                     }
@@ -78,4 +58,29 @@ class ItemController {
         return items;
     }
     
+    
+    // MARK: Add or Update Item Likes
+    func addOrUpdateLikes(itemId: String, userId: String, value: Bool) -> Bool {
+        // TODO: logic
+        let semaphore = DispatchSemaphore(value: 0);
+        var success:Bool = true;
+        let database = Database.database();
+        let userWhoLikeRef = database.reference(withPath: "items/\(itemId)/userWhoLike/\(userId)");
+        
+        userWhoLikeRef.setValue(value, withCompletionBlock: { err, ref in
+            if let error = err {
+                print("Item Like was not successful: \(error.localizedDescription)")
+                success = false
+                semaphore.signal()
+            } else {
+                print("Item Liked successfully!")
+                semaphore.signal()
+            }
+        });
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        return success;
+        
+    }
 }
