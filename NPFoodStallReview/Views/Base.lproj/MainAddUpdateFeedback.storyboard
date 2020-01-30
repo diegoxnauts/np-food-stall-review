@@ -120,14 +120,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="gpu-iu-dqf">
-                            <rect key="frame" x="0.0" y="99.5" width="414" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Add / Update Feedback"/>
-                            <connections>
-                                <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="WWX-hZ-kQL"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedbackCell" id="vBQ-40-Cbx">
                                 <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
@@ -143,7 +135,13 @@
                             <outlet property="delegate" destination="lcf-3k-jil" id="JJP-Mg-otG"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Feedbacks" id="jZ3-rH-UB4"/>
+                    <navigationItem key="navigationItem" title="Feedbacks" id="Iqm-rd-NtH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ZjZ-QT-Yxy">
+                            <connections>
+                                <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="7CZ-8n-nLj"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MXM-BL-9p2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
