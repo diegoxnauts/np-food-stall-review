@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,11 +21,17 @@
                                     <constraint firstAttribute="height" constant="352" id="0sa-bk-HcM"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kSO-qw-idL">
-                                <rect key="frame" x="361" y="35" width="22" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mT-e9-ezj">
+                                <rect key="frame" x="369" y="30" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="0wd-5O-qPm"/>
+                                    <constraint firstAttribute="height" constant="25" id="XY6-Au-fHl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" image="gear" catalog="system"/>
+                                <state key="normal" image="loginlogout"/>
+                                <connections>
+                                    <action selector="loginLogoutBtn:" destination="0Cg-Tc-rCQ" eventType="touchUpInside" id="ejo-NF-BXd"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-LU-ltq">
                                 <rect key="frame" x="0.0" y="404" width="414" height="409"/>
@@ -77,10 +83,12 @@
                             <constraint firstItem="ORm-HS-iVD" firstAttribute="leading" secondItem="lb4-TX-TCu" secondAttribute="leading" constant="150" id="6jR-JT-wc2"/>
                             <constraint firstItem="ruw-LU-ltq" firstAttribute="top" secondItem="ORm-HS-iVD" secondAttribute="bottom" constant="14" id="C6H-Ol-x0x"/>
                             <constraint firstItem="ORm-HS-iVD" firstAttribute="top" secondItem="UH3-Zd-ta8" secondAttribute="bottom" constant="17" id="OYu-ta-1ff"/>
+                            <constraint firstItem="2mT-e9-ezj" firstAttribute="top" secondItem="5fD-X2-yrV" secondAttribute="top" constant="30" id="YLz-ET-hEn"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="leading" secondItem="ruw-LU-ltq" secondAttribute="leading" id="a4d-13-oLB"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="trailing" secondItem="lb4-TX-TCu" secondAttribute="trailing" id="bCx-IX-27o"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ruw-LU-ltq" secondAttribute="bottom" id="e6X-T6-h6R"/>
                             <constraint firstItem="lb4-TX-TCu" firstAttribute="trailing" secondItem="ORm-HS-iVD" secondAttribute="trailing" constant="150" id="ezO-6l-SRu"/>
+                            <constraint firstAttribute="trailing" secondItem="2mT-e9-ezj" secondAttribute="trailing" constant="20" id="fD2-it-8z6"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="trailing" secondItem="ruw-LU-ltq" secondAttribute="trailing" id="hAs-Dy-GFg"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="top" secondItem="5fD-X2-yrV" secondAttribute="top" id="vxB-eq-VSl"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="leading" secondItem="lb4-TX-TCu" secondAttribute="leading" id="vz5-qo-S7Q"/>
@@ -99,6 +107,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="loginlogout" width="512" height="512"/>
     </resources>
 </document>

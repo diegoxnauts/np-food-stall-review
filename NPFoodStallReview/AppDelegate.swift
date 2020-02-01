@@ -10,11 +10,15 @@ import UIKit
 import Firebase
 import CoreData
 import GoogleSignIn
+import MapKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     static var googleUser:GIDGoogleUser?
+    static var cameraBoundary : MKMapView.CameraBoundary?
+    static var currentCoordinate : MKCoordinateRegion?
+    static var annotationsList:[MKAnnotation] = []
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {

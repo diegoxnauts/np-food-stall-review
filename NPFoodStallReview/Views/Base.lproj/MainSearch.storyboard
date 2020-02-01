@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,12 +21,6 @@
                                     <constraint firstAttribute="height" constant="352" id="eJy-lq-Tmc"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IOW-vb-oyH">
-                                <rect key="frame" x="361" y="35" width="22" height="27"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" image="gear" catalog="system"/>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-gX-Lrf">
                                 <rect key="frame" x="0.0" y="404" width="414" height="409"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -60,9 +54,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoP-YP-cLy">
+                                <rect key="frame" x="369" y="30" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="8dX-a1-wxo"/>
+                                    <constraint firstAttribute="width" constant="25" id="qUA-cl-a1O"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="loginlogout"/>
+                                <connections>
+                                    <action selector="loginLogoutBtn:" destination="bXA-8V-8L1" eventType="touchUpInside" id="6Oc-Ix-cMI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="fVZ-f6-PvA" firstAttribute="trailing" secondItem="XoP-YP-cLy" secondAttribute="trailing" constant="20" id="EIB-rN-BVk"/>
+                            <constraint firstItem="XoP-YP-cLy" firstAttribute="top" secondItem="Pi2-lo-VuT" secondAttribute="top" constant="30" id="Mbb-Q3-SXd"/>
                             <constraint firstAttribute="bottomMargin" secondItem="FgQ-gX-Lrf" secondAttribute="bottom" id="RXK-lp-Kqx"/>
                             <constraint firstItem="2e6-0F-Tid" firstAttribute="leading" secondItem="fVZ-f6-PvA" secondAttribute="leading" constant="150" id="WhK-4B-WkM"/>
                             <constraint firstItem="2e6-0F-Tid" firstAttribute="top" secondItem="Jea-Wb-Z28" secondAttribute="bottom" constant="17" id="XqE-qe-zLQ"/>
@@ -88,6 +96,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear" catalog="system" width="64" height="58"/>
+        <image name="loginlogout" width="512" height="512"/>
     </resources>
 </document>

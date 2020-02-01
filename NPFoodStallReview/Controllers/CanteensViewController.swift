@@ -38,6 +38,9 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     
     var isFetching:Bool = false;
     
+    var cameraBoundary = AppDelegate.cameraBoundary
+    var currentCoordinate = AppDelegate.currentCoordinate
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var canteensTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
@@ -56,13 +59,24 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View did load");
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         locationManager.delegate = locationDelegate;
         canteensTableView.delegate = self;
         mapView.showsUserLocation = true;
+        mapView.delegate = self
+        AppDelegate.currentCoordinate = mapView.region
+        AppDelegate.cameraBoundary = mapView.cameraBoundary
+        let defaultLocation = CLLocationCoordinate2D(latitude: 1.332118, longitude: 103.774369)
+        let region = MKCoordinateRegion(center: defaultLocation, latitudinalMeters: 700, longitudinalMeters: 700)
+        mapView.setRegion(region, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        
+        mapView.setRegion(AppDelegate.currentCoordinate!, animated: false)
+        mapView.setCameraBoundary(AppDelegate.cameraBoundary, animated: false)
         
         // So tableview would refresh the data and not add duplicate items
         canteenList.removeAll();
@@ -127,8 +141,16 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             semaphore.wait()
             
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
+                AppDelegate.annotationsList = []
                 for canteen in self.canteenList {
                     self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
+                    let annotation = MKPointAnnotation()  // <-- new instance here
+                    let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+                    annotation.coordinate = canteenLocation
+                    annotation.title = "\(canteen.name)"
+                    self.mapView.addAnnotation(annotation)
+                    AppDelegate.annotationsList.append(annotation)
+                    print(canteen.name)
                 }
                 self.loadingIndicator.stopAnimating();
                 print("Async call done");
@@ -138,6 +160,10 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        AppDelegate.currentCoordinate = mapView.region
+        AppDelegate.cameraBoundary = mapView.cameraBoundary
+    }
     
     // MARK: TABLE: Section Headers
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -214,11 +240,12 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     // MARK: Row Tap Event
-    /*
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let canteen = canteenList[indexPath.row];
-        
-    }*/
+        let canteen = canteenList[indexPath.section]
+        let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+        let region = MKCoordinateRegion(center: canteenLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+        mapView.setRegion(region, animated: true)
+    }
     
     
     // MARK: MAP Functions
