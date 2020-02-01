@@ -20,7 +20,16 @@ class ItemCell : UITableViewCell {
     func setup(item: Item) {
         itemName.text = item.name
         itemPrice.text = convertDoubleToCurrency(amount: item.price)
-
+        
+        var count = 0;
+        
+        for (_, value) in item.userWhoLike {
+            if (value) {
+                count += 1;
+            }
+        }
+        
+        likesNo.text = "\(count) Likes";
     }
     
     func convertDoubleToCurrency(amount: Double) -> String{
