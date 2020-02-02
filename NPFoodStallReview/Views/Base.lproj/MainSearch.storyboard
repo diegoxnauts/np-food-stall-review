@@ -55,7 +55,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoP-YP-cLy">
-                                <rect key="frame" x="369" y="30" width="25" height="25"/>
+                                <rect key="frame" x="369" y="44" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="8dX-a1-wxo"/>
                                     <constraint firstAttribute="width" constant="25" id="qUA-cl-a1O"/>
@@ -70,7 +70,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fVZ-f6-PvA" firstAttribute="trailing" secondItem="XoP-YP-cLy" secondAttribute="trailing" constant="20" id="EIB-rN-BVk"/>
-                            <constraint firstItem="XoP-YP-cLy" firstAttribute="top" secondItem="Pi2-lo-VuT" secondAttribute="top" constant="30" id="Mbb-Q3-SXd"/>
+                            <constraint firstItem="XoP-YP-cLy" firstAttribute="top" secondItem="fVZ-f6-PvA" secondAttribute="top" id="Mbb-Q3-SXd"/>
                             <constraint firstAttribute="bottomMargin" secondItem="FgQ-gX-Lrf" secondAttribute="bottom" id="RXK-lp-Kqx"/>
                             <constraint firstItem="2e6-0F-Tid" firstAttribute="leading" secondItem="fVZ-f6-PvA" secondAttribute="leading" constant="150" id="WhK-4B-WkM"/>
                             <constraint firstItem="2e6-0F-Tid" firstAttribute="top" secondItem="Jea-Wb-Z28" secondAttribute="bottom" constant="17" id="XqE-qe-zLQ"/>
