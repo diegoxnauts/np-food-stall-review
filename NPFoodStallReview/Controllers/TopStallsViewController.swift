@@ -60,6 +60,28 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
                 return;
             }
             semaphore.wait()
+            // Fetch feedback for each stalls, derive stall rating and sort form high - low
+            do {
+                for stall in self.stallList {
+                    var rating:Double = 0.0;
+                    let feedbacks = try self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId)
+                    stall.feedbacks = feedbacks
+                    for feedback in feedbacks {
+                        rating += feedback.rating!;
+                    }
+                    if (feedbacks.count > 0) {
+                        rating = rating / Double(feedbacks.count);
+                    }
+                    stall.rating = rating;
+                }
+
+            semaphore.signal();
+            }
+             catch {
+                print(error);
+                return;
+            }
+            semaphore.wait()
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
                     self.TopStallTableView.reloadData();
                     print(self.stallList.count)
@@ -82,7 +104,10 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! TopStallCell
-        let stall = stallList[indexPath.row]
+        let sortedStall = stallList.sorted(by:
+        {$0.feedbacks.count > $1.feedbacks.count})
+        
+        let stall = sortedStall[indexPath.row]
         cell.cellDisplay(stall: stall)
         return cell
     }

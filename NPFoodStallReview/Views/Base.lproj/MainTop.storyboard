@@ -62,6 +62,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baf-fM-blM">
+                                                    <rect key="frame" x="181" y="53" width="31" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="vFu-0e-CRN" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leadingMargin" constant="30" id="hfi-Ir-QGx"/>
@@ -70,6 +77,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="canteenLabel" destination="oKk-re-GbY" id="wIj-UH-32D"/>
+                                            <outlet property="noOfRatings" destination="baf-fM-blM" id="qla-62-aoz"/>
                                             <outlet property="ratings" destination="8lx-ra-aGG" id="Q2c-gH-RDY"/>
                                             <outlet property="stallLabel" destination="vFu-0e-CRN" id="Tm5-ZP-HlU"/>
                                         </connections>
