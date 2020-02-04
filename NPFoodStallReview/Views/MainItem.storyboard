@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,14 +16,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IYL-CG-CwD">
-                                <rect key="frame" x="0.0" y="295" width="375" height="517"/>
+                                <rect key="frame" x="0.0" y="295" width="416" height="517"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemCell" rowHeight="75" id="FQJ-u7-sl0" customClass="ItemCell" customModule="NPFoodStallReview" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="28" width="416" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FQJ-u7-sl0" id="5WS-An-DYo">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="416" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Steamed Chicken Rice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UY3-CL-bzY">
@@ -45,7 +45,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHV-ib-tPp">
-                                                    <rect key="frame" x="310" y="18" width="22" height="22"/>
+                                                    <rect key="frame" x="351" y="18" width="22" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="22" id="eYY-GH-LYm"/>
                                                         <constraint firstAttribute="height" constant="22" id="vDg-2L-vvF"/>
@@ -54,7 +54,7 @@
                                                     <state key="normal" image="hand.thumbsup" catalog="system"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btB-Yj-fzb">
-                                                    <rect key="frame" x="291" y="44" width="61" height="17"/>
+                                                    <rect key="frame" x="332" y="44" width="61" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="0Kc-Gm-toV"/>
                                                     </constraints>
@@ -63,7 +63,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i5m-ui-3eD">
-                                                    <rect key="frame" x="311" y="18" width="20" height="22"/>
+                                                    <rect key="frame" x="352" y="18" width="20" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="6ol-wb-uZd"/>
                                                         <constraint firstAttribute="width" constant="20" id="YEU-46-bii"/>
@@ -98,7 +98,7 @@
                                 </prototypes>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu" translatesAutoresizingMaskIntoConstraints="NO" id="Ttv-cO-mZv">
-                                <rect key="frame" x="130" y="113" width="115" height="141"/>
+                                <rect key="frame" x="130" y="113" width="156" height="141"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Ttv-cO-mZv" secondAttribute="height" multiplier="52:47" id="Uti-9t-aaj"/>
                                     <constraint firstAttribute="height" constant="141" id="YCp-Ys-e6H"/>
@@ -119,7 +119,7 @@
                         <viewLayoutGuide key="safeArea" id="a97-fD-uhw"/>
                     </view>
                     <navigationItem key="navigationItem" id="afT-K0-AMe">
-                        <barButtonItem key="rightBarButtonItem" title="Close" image="clear" catalog="system" id="ylb-Rc-6Cw">
+                        <barButtonItem key="leftBarButtonItem" title="Close" image="clear" catalog="system" id="ylb-Rc-6Cw">
                             <connections>
                                 <action selector="closeBtn:" destination="38Y-d7-ZWd" id="ytE-Mo-uzY"/>
                             </connections>

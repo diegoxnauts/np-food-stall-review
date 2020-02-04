@@ -122,4 +122,8 @@ class FeedbacksViewController:UITableViewController {
             destVC.feedbackCanteen = selectedCanteen
         }
     }
+    
+    @IBAction func closeBtn(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 }
