@@ -165,14 +165,13 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             }
             semaphore.wait()
             
-            DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
+            DispatchQueue.main.sync { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
                 AppDelegate.annotationsList = []
                 for canteen in self.canteenList {
                     var isCanteenAdded = false;
                     for index in self.expandableCanteenList.indices {
-                        var expandableCanteen = self.expandableCanteenList[index];
-                        if (expandableCanteen.canteen.canteenId == canteen.canteenId) {
-                            expandableCanteen.canteen = canteen;
+                        if (self.expandableCanteenList[index].canteen.canteenId == canteen.canteenId) {
+                            self.expandableCanteenList[index].canteen = canteen;
                             isCanteenAdded = true;
                         }
                     }
