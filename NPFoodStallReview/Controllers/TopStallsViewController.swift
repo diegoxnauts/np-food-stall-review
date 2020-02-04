@@ -70,6 +70,7 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         } else {
             logoutBtn.isHidden = true
             loginBtn.isHidden = false
+        }
         stallList.removeAll()
         TopStallTableView.reloadData()
         
@@ -188,4 +189,3 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         present(alert, animated: true, completion: nil)
     }
 }
-
