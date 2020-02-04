@@ -21,16 +21,15 @@
                                     <constraint firstAttribute="height" constant="352" id="0sa-bk-HcM"/>
                                 </constraints>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mT-e9-ezj">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NPA-Rm-L9H">
                                 <rect key="frame" x="369" y="44" width="25" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="0wd-5O-qPm"/>
-                                    <constraint firstAttribute="height" constant="25" id="XY6-Au-fHl"/>
+                                    <constraint firstAttribute="height" constant="25" id="EME-gQ-Tos"/>
+                                    <constraint firstAttribute="width" constant="25" id="IsK-pz-ae1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <state key="normal" image="loginlogout"/>
+                                <state key="normal" title="Button" image="login"/>
                                 <connections>
-                                    <action selector="loginLogoutBtn:" destination="0Cg-Tc-rCQ" eventType="touchUpInside" id="ejo-NF-BXd"/>
+                                    <action selector="loginToGoogleBtn:" destination="0Cg-Tc-rCQ" eventType="touchUpInside" id="qqv-3k-wfB"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ruw-LU-ltq">
@@ -77,14 +76,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2mT-e9-ezj">
+                                <rect key="frame" x="369" y="44" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="0wd-5O-qPm"/>
+                                    <constraint firstAttribute="height" constant="25" id="XY6-Au-fHl"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" image="loginlogout"/>
+                                <connections>
+                                    <action selector="logoutFromGoogleBtn:" destination="0Cg-Tc-rCQ" eventType="touchUpInside" id="5C4-Hw-5m0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ORm-HS-iVD" firstAttribute="leading" secondItem="lb4-TX-TCu" secondAttribute="leading" constant="150" id="6jR-JT-wc2"/>
                             <constraint firstItem="ruw-LU-ltq" firstAttribute="top" secondItem="ORm-HS-iVD" secondAttribute="bottom" constant="14" id="C6H-Ol-x0x"/>
+                            <constraint firstItem="lb4-TX-TCu" firstAttribute="trailing" secondItem="NPA-Rm-L9H" secondAttribute="trailing" constant="20" id="E7e-dE-oyV"/>
                             <constraint firstItem="ORm-HS-iVD" firstAttribute="top" secondItem="UH3-Zd-ta8" secondAttribute="bottom" constant="17" id="OYu-ta-1ff"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="leading" secondItem="ruw-LU-ltq" secondAttribute="leading" id="a4d-13-oLB"/>
                             <constraint firstItem="UH3-Zd-ta8" firstAttribute="trailing" secondItem="lb4-TX-TCu" secondAttribute="trailing" id="bCx-IX-27o"/>
+                            <constraint firstItem="NPA-Rm-L9H" firstAttribute="top" secondItem="lb4-TX-TCu" secondAttribute="top" id="dmy-UG-6wW"/>
                             <constraint firstAttribute="bottomMargin" secondItem="ruw-LU-ltq" secondAttribute="bottom" id="e6X-T6-h6R"/>
                             <constraint firstItem="lb4-TX-TCu" firstAttribute="trailing" secondItem="ORm-HS-iVD" secondAttribute="trailing" constant="150" id="ezO-6l-SRu"/>
                             <constraint firstAttribute="trailing" secondItem="2mT-e9-ezj" secondAttribute="trailing" constant="20" id="fD2-it-8z6"/>
@@ -98,6 +111,8 @@
                     <tabBarItem key="tabBarItem" title="Top Stall" id="jSb-Fd-di6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="loginBtn" destination="NPA-Rm-L9H" id="tAU-nE-vsv"/>
+                        <outlet property="logoutBtn" destination="2mT-e9-ezj" id="yhy-1W-kKd"/>
                         <outlet property="mapView" destination="UH3-Zd-ta8" id="cl3-VN-s7o"/>
                     </connections>
                 </viewController>
@@ -107,6 +122,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="login" width="512" height="512"/>
         <image name="loginlogout" width="512" height="512"/>
     </resources>
 </document>

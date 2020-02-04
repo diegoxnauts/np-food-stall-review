@@ -21,6 +21,17 @@
                                     <constraint firstAttribute="height" constant="352" id="eJy-lq-Tmc"/>
                                 </constraints>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WHI-7b-U4S">
+                                <rect key="frame" x="369" y="44" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="0TK-f8-IGC"/>
+                                    <constraint firstAttribute="height" constant="25" id="8hg-Dw-pvb"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="login"/>
+                                <connections>
+                                    <action selector="loginToGoogleBtn:" destination="bXA-8V-8L1" eventType="touchUpInside" id="8xe-vS-dtl"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FgQ-gX-Lrf">
                                 <rect key="frame" x="0.0" y="404" width="414" height="409"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -63,13 +74,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <state key="normal" image="loginlogout"/>
                                 <connections>
-                                    <action selector="loginLogoutBtn:" destination="bXA-8V-8L1" eventType="touchUpInside" id="6Oc-Ix-cMI"/>
+                                    <action selector="logoutFromGoogleBtn:" destination="bXA-8V-8L1" eventType="touchUpInside" id="5mJ-SY-xYG"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="fVZ-f6-PvA" firstAttribute="trailing" secondItem="XoP-YP-cLy" secondAttribute="trailing" constant="20" id="EIB-rN-BVk"/>
+                            <constraint firstItem="WHI-7b-U4S" firstAttribute="top" secondItem="fVZ-f6-PvA" secondAttribute="top" id="Izj-oo-YFI"/>
                             <constraint firstItem="XoP-YP-cLy" firstAttribute="top" secondItem="fVZ-f6-PvA" secondAttribute="top" id="Mbb-Q3-SXd"/>
                             <constraint firstAttribute="bottomMargin" secondItem="FgQ-gX-Lrf" secondAttribute="bottom" id="RXK-lp-Kqx"/>
                             <constraint firstItem="2e6-0F-Tid" firstAttribute="leading" secondItem="fVZ-f6-PvA" secondAttribute="leading" constant="150" id="WhK-4B-WkM"/>
@@ -81,12 +93,15 @@
                             <constraint firstItem="Jea-Wb-Z28" firstAttribute="top" secondItem="Pi2-lo-VuT" secondAttribute="top" id="koI-hg-j7O"/>
                             <constraint firstItem="FgQ-gX-Lrf" firstAttribute="top" secondItem="2e6-0F-Tid" secondAttribute="bottom" constant="14" id="mFz-3k-iqj"/>
                             <constraint firstItem="Jea-Wb-Z28" firstAttribute="leading" secondItem="fVZ-f6-PvA" secondAttribute="leading" id="mPT-Mk-6If"/>
+                            <constraint firstItem="fVZ-f6-PvA" firstAttribute="trailing" secondItem="WHI-7b-U4S" secondAttribute="trailing" constant="20" id="wDJ-on-lk3"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fVZ-f6-PvA"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" id="DdF-Fj-FqV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="loginBtn" destination="WHI-7b-U4S" id="qL5-O6-KgH"/>
+                        <outlet property="logoutBtn" destination="XoP-YP-cLy" id="NnL-iT-zpL"/>
                         <outlet property="mapView" destination="Jea-Wb-Z28" id="pze-6C-Vd8"/>
                     </connections>
                 </viewController>
@@ -96,6 +111,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="login" width="512" height="512"/>
         <image name="loginlogout" width="512" height="512"/>
     </resources>
 </document>

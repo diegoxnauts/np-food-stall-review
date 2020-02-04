@@ -14,6 +14,9 @@ import GoogleSignIn
 class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var logoutBtn: UIButton!
+    let afterGoogleSignin = Notification.Name(rawValue: afterGoogleSignInKey)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +29,18 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for annotation in AppDelegate.annotationsList {
             mapView.addAnnotation(annotation)
         }
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        if (AppDelegate.googleUser != nil) {
+            loginBtn.isHidden = true
+            logoutBtn.isHidden = false
+        } else {
+            logoutBtn.isHidden = true
+            loginBtn.isHidden = false
+        }
+        
+        createObserver();
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +50,26 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         for annotation in AppDelegate.annotationsList {
             mapView.addAnnotation(annotation)
         }
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        if (AppDelegate.googleUser != nil) {
+            loginBtn.isHidden = true
+            logoutBtn.isHidden = false
+        } else {
+            logoutBtn.isHidden = true
+            loginBtn.isHidden = false
+        }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func createObserver() {
+        // Google Sign in observer
+        NotificationCenter.default.addObserver(self, selector: #selector(enableLogoutDisableLogin), name: afterGoogleSignin, object: nil)
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -52,15 +87,19 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return cell
     }
     
-    @IBAction func loginLogoutBtn(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        if (AppDelegate.googleUser != nil) {
-            logoutAlert()
-        } else {
-            loginAlert()
-        }
+    @IBAction func loginToGoogleBtn(_ sender: Any) {
+        loginAlert()
     }
+    
+    @objc func enableLogoutDisableLogin() {
+        self.loginBtn.isHidden = true
+        self.logoutBtn.isHidden = false
+    }
+    
+    @IBAction func logoutFromGoogleBtn(_ sender: Any) {
+        logoutAlert()
+    }
+    
     
     func loginAlert() {
         let alert = UIAlertController(title: "Log In", message: "Would you like to log in?", preferredStyle: .alert)
@@ -80,6 +119,8 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
             GIDSignIn.sharedInstance()?.signOut()
+            self.loginBtn.isHidden = false
+            self.logoutBtn.isHidden = true
         })
         
         alert.addAction(action)

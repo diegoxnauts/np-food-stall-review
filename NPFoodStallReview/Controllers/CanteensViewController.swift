@@ -29,6 +29,7 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     var canteenController: CanteenController = CanteenController();
     var stallController: StallController = StallController();
     var feedbackController: FeedbackController = FeedbackController();
+    let afterGoogleSignin = Notification.Name(rawValue: afterGoogleSignInKey)
     
     var canteenList: [Canteen] = [];
     
@@ -44,6 +45,8 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var canteensTableView: UITableView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var logoutBtn: UIButton!
     
     let locationDelegate = LocationDelegate()
     
@@ -59,8 +62,20 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         print("View did load");
+        
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        if (AppDelegate.googleUser != nil) {
+            loginBtn.isHidden = true
+            logoutBtn.isHidden = false
+        } else {
+            logoutBtn.isHidden = true
+            loginBtn.isHidden = false
+        }
+        
+        createObserver();
+        
         locationManager.delegate = locationDelegate;
         canteensTableView.delegate = self;
         mapView.showsUserLocation = true;
@@ -74,6 +89,17 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated);
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        if (AppDelegate.googleUser != nil) {
+            loginBtn.isHidden = true
+            logoutBtn.isHidden = false
+        } else {
+            logoutBtn.isHidden = true
+            loginBtn.isHidden = false
+        }
         
         mapView.setRegion(AppDelegate.currentCoordinate!, animated: false)
         mapView.setCameraBoundary(AppDelegate.cameraBoundary, animated: false)
@@ -158,6 +184,15 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
                 self.canteensTableView.reloadData();
             }
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func createObserver() {
+        // Google Sign in observer
+        NotificationCenter.default.addObserver(self, selector: #selector(enableLogoutDisableLogin), name: afterGoogleSignin, object: nil)
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
@@ -297,15 +332,18 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             destVC.selectedCanteen = canteen
         }
     }
+
+    @IBAction func loginToGoogleBtn(_ sender: Any) {
+        loginAlert()
+    }
     
-    @IBAction func loginLogoutBtn(_ sender: Any) {
-        GIDSignIn.sharedInstance()?.presentingViewController = self
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
-        if (AppDelegate.googleUser != nil) {
-            logoutAlert()
-        } else {
-            loginAlert()
-        }
+    @objc func enableLogoutDisableLogin() {
+        self.loginBtn.isHidden = true
+        self.logoutBtn.isHidden = false
+    }
+    
+    @IBAction func logoutFromGoogleBtn(_ sender: Any) {
+        logoutAlert()
     }
     
     func loginAlert() {
@@ -326,6 +364,9 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
             GIDSignIn.sharedInstance()?.signOut()
+            AppDelegate.googleUser = nil
+            self.loginBtn.isHidden = false
+            self.logoutBtn.isHidden = true
         })
         
         alert.addAction(action)
