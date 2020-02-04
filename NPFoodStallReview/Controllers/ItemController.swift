@@ -83,4 +83,45 @@ class ItemController {
         return success;
         
     }
+    
+    func retrieveItems() throws -> [Item] {
+        var isError = false;
+        var items:[Item] = []
+        
+        let semaphore = DispatchSemaphore(value: 0);
+        
+        let database = Database.database()
+        let itemsRef = database.reference(withPath: "items")
+        itemsRef.observeSingleEvent(of: .value , with: {snapshot in
+            if (snapshot.exists()) {
+                for child in snapshot.children.allObjects {
+                    let itemSnapshot = child as! DataSnapshot
+                    if let itemInfo = itemSnapshot.value as? [String:AnyObject] {
+                        let name = itemInfo["name"] as! String
+                        let stallID = itemInfo["stallId"] as! String
+                        let price = itemInfo["price"] as! Double
+                        var userWhoLikeDict = [String: Bool]();
+                        if let userWhoLike = itemInfo["userWhoLike"] {
+                            userWhoLikeDict = userWhoLike as! [String:Bool];
+                        }
+                        let item = Item(itemId: itemSnapshot.key, name: name, price: price, stallId: stallID, userWhoLike: userWhoLikeDict)
+                        items.append(item)
+                    }
+                }
+            }
+            semaphore.signal()
+        }, withCancel: { (err) in
+            print("Retrieve Error: \(err)");
+            isError = true;
+            semaphore.signal()
+        })
+        
+        _ = semaphore.wait(wallTimeout: .distantFuture)
+        
+        if (isError) {
+            throw FireBaseError.server;
+        }
+        
+        return items;
+    }
 }

@@ -19,6 +19,7 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
     var feedbackController: FeedbackController = FeedbackController();
 
     var stallList:[Stall] = []
+    var canteenList:[Canteen] = []
     
     @IBOutlet weak var mapView: MKMapView!
     var cameraBoundary : MKMapView.CameraBoundary?
@@ -51,6 +52,13 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         createObserver();
         TopStallTableView.delegate = self;
+        mapView.showsUserLocation = true;
+        mapView.delegate = self
+        AppDelegate.currentCoordinate = mapView.region
+        AppDelegate.cameraBoundary = mapView.cameraBoundary
+        let defaultLocation = CLLocationCoordinate2D(latitude: 1.332118, longitude: 103.774369)
+        let region = MKCoordinateRegion(center: defaultLocation, latitudinalMeters: 700, longitudinalMeters: 700)
+        mapView.setRegion(region, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -72,11 +80,19 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
             loginBtn.isHidden = false
         }
         stallList.removeAll()
-        TopStallTableView.reloadData()
         
         DispatchQueue.global(qos: .utility).async {
             
             let semaphore = DispatchSemaphore(value: 0);
+            do {
+                let canteens = try self.canteenController.retrieveCanteens()
+                self.canteenList = canteens
+                semaphore.signal()
+            } catch {
+                print(error);
+                return;
+            }
+            semaphore.wait();
             do {
                 let stalls = try self.stallController.retrieveStalls()
                 self.stallList = stalls
@@ -86,7 +102,7 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
                 return;
             }
             semaphore.wait()
-            // Fetch feedback for each stalls, derive stall rating and sort form high - low
+            // Fetch feedback for each stalls, derive stall rating value
             do {
                 for stall in self.stallList {
                     var rating:Double = 0.0;
@@ -96,7 +112,8 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
                         rating += feedback.rating!;
                     }
                     if (feedbacks.count > 0) {
-                        rating = rating / Double(feedbacks.count);
+                        let x = rating / Double(feedbacks.count); //round it to closest .5
+                        rating = round(x * 2.0) / 2.0;
                     }
                     stall.rating = rating;
                 }
@@ -109,10 +126,20 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
             }
             semaphore.wait()
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
-                    self.TopStallTableView.reloadData();
-                    print(self.stallList.count)
+                
+                for canteen in self.canteenList{
+                    let annotation = MKPointAnnotation()  // <-- new instance here
+                    let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+                    annotation.coordinate = canteenLocation
+                    annotation.title = "\(canteen.name)"
+                    self.mapView.addAnnotation(annotation)
+                    AppDelegate.annotationsList.append(annotation)
+                }
+                self.TopStallTableView.reloadData();
+                print(self.stallList.count)
             }
         }
+        
     }
     
     deinit {
@@ -139,14 +166,66 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! TopStallCell
-        let sortedStall = stallList.sorted(by:
-        {$0.feedbacks.count > $1.feedbacks.count})
-        
-        let stall = sortedStall[indexPath.row]
+       self.stallList.sort{ //sort ratings and feedback in descending order
+           if $0.rating != nil{
+               if $0.rating! != $1.rating!{ //check ratings first
+                   return $0.rating! > $1.rating! //sort ratings
+               }
+               else{
+                   return $0.feedbacks.count > $1.feedbacks.count //sort feedbacks
+               }
+           }
+           return false
+       }
+        let stall = stallList[indexPath.row]
+        for canteen in canteenList{
+            if canteen.canteenId == stall.canteenId{
+                cell.canteenLabel.text = canteen.name
+            }
+        }
         cell.cellDisplay(stall: stall)
+        cell.fbBtn.tag = indexPath.row
+        cell.mBtn.tag = indexPath.row
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let stall = stallList[indexPath.row]
+        for canteen in canteenList{
+            if canteen.canteenId == stall.canteenId{
+                let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+                let region = MKCoordinateRegion(center: canteenLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+                mapView.setRegion(region, animated: true)
+            }
+        }
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "ToViewFeedbackPage") {
+            let parentVC = segue.destination as! UINavigationController
+            let destVC = parentVC.topViewController as! FeedbacksViewController
+            let senderCell = sender as! UIButton
+            let stallIndex = senderCell.tag
+            let stall = stallList[stallIndex]
+            destVC.selectedStall = stall
+            for canteen in canteenList{
+                if canteen.canteenId == stall.canteenId{
+                    destVC.selectedCanteen = canteen
+                }
+            }
+            
+        } else if (segue.identifier == "ToViewItemPage") {
+            let parentVC = segue.destination as! UINavigationController
+            let destVC = parentVC.topViewController as! ShowItemViewController
+            let senderCell = sender as! UIButton
+            let stallIndex = senderCell.tag
+            let stall = stallList[stallIndex]
+            destVC.selectedStall = stall
+            for canteen in canteenList{
+                if canteen.canteenId == stall.canteenId{
+                    destVC.selectedCanteen = canteen
+                }
+            }
+        }
+    }
     @IBAction func loginToGoogleBtn(_ sender: Any) {
         loginAlert()
     }

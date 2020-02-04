@@ -11,7 +11,20 @@ import UIKit
 import MapKit
 import GoogleSignIn
 
-class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+class SearchViewController: UIViewController, MKMapViewDelegate {
+    
+    @IBOutlet weak var searchContainerView: UIView!
+     @IBOutlet weak var searchTableView: UITableView!
+    
+    var searchController = UISearchController()
+    
+    var canteenController: CanteenController = CanteenController();
+    var stallController: StallController = StallController();
+    var feedbackController: FeedbackController = FeedbackController();
+    var itemController: ItemController = ItemController();
+
+    var itemsList:[Item] = []
+    var curItemList:[Item] = []
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var loginBtn: UIButton!
@@ -39,9 +52,15 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             logoutBtn.isHidden = true
             loginBtn.isHidden = false
         }
-        
         createObserver();
+        searchTableView.delegate = self
+        searchController = UISearchController(searchResultsController: nil) //Pass to the same view
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false //Interact with tableview
+        searchContainerView.addSubview(searchController.searchBar) //add searchbar
+        searchController.searchBar.delegate = self
     }
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(false)
@@ -61,6 +80,46 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
             logoutBtn.isHidden = true
             loginBtn.isHidden = false
         }
+        itemsList.removeAll()
+        
+        DispatchQueue.global(qos: .utility).async {
+            
+            let semaphore = DispatchSemaphore(value: 0);
+            do {
+                let items = try self.itemController.retrieveItems()
+                self.itemsList = items
+                semaphore.signal()
+            } catch {
+                print(error);
+                return;
+            }
+            semaphore.wait();
+            
+            DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
+                
+                self.curItemList = self.itemsList
+                self.searchTableView.reloadData();
+                print(self.itemsList.count)
+            }
+        }
+        
+    }
+    @IBAction func refreshBtn(_ sender: Any) {
+        restore()
+    }
+    func filterCurrent(search: String){
+        if search.count > 0{
+            curItemList = itemsList //fresh state
+            
+            let filter = curItemList.filter{$0.name.replacingOccurrences(of: " ", with: "").lowercased().contains(search.replacingOccurrences(of: " ", with: "").lowercased())}
+            
+            curItemList = filter
+            searchTableView.reloadData()
+        }
+    }
+    func restore(){
+        curItemList = itemsList
+        searchTableView.reloadData()
     }
     
     deinit {
@@ -77,15 +136,6 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         AppDelegate.cameraBoundary = mapView.cameraBoundary
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath)
-        cell.textLabel?.text = "Canteen"
-        return cell
-    }
     
     @IBAction func loginToGoogleBtn(_ sender: Any) {
         loginAlert()
@@ -127,5 +177,40 @@ class SearchViewController: UIViewController, UITableViewDelegate, UITableViewDa
         alert.addAction(action2)
         
         present(alert, animated: true, completion: nil)
+    }
+}
+extension SearchViewController: UISearchResultsUpdating{
+    func updateSearchResults(for searchController: UISearchController) {
+        if let search = searchController.searchBar.text{
+            filterCurrent(search: search)
+        }
+    }
+    
+}
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchController.isActive = false
+        if let search = searchBar.text{
+            filterCurrent(search: search)
+        }
+    }
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchController.isActive = false
+        if let search = searchBar.text, !search.isEmpty{
+            restore()
+        }
+    }
+}
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return curItemList.count;
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! searchCell
+        cell.itemTitle?.text = curItemList[indexPath.row].name
+        return cell
     }
 }

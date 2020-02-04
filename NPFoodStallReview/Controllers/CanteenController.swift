@@ -70,9 +70,6 @@ class CanteenController {
         if (isError) {
             throw FireBaseError.server;
         }
-        
         return canteens;
     }
-    
-    
 }

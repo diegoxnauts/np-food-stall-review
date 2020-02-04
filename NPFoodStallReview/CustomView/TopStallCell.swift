@@ -16,11 +16,13 @@ class TopStallCell : UITableViewCell{
     @IBOutlet weak var canteenLabel: UILabel!
     @IBOutlet weak var ratings: CosmosView!
     @IBOutlet weak var noOfRatings: UILabel!
+    @IBOutlet weak var fbBtn: UIButton!
+    @IBOutlet weak var mBtn: UIButton!
     func cellDisplay(stall: Stall) {
         stallLabel.text = stall.name
         if (stall.rating != nil) {
             ratings.rating = stall.rating!
-            noOfRatings.text = "(\(String(stall.feedbacks.count)))"
+            noOfRatings.text = "(\(stall.feedbacks.count))"
         }
         
     }
