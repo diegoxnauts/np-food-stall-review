@@ -163,6 +163,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Feedbacks" id="Iqm-rd-NtH">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="clear" catalog="system" id="9AC-3B-k8f">
+                            <connections>
+                                <action selector="closeBtn:" destination="lcf-3k-jil" id="GdL-7L-D8d"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="ZjZ-QT-Yxy">
                             <connections>
                                 <segue destination="cJs-NG-afF" kind="show" identifier="ToAddUpdateFeedbackPage" id="7CZ-8n-nLj"/>
@@ -191,4 +196,7 @@
             <point key="canvasLocation" x="-1358" y="90"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="clear" catalog="system" width="64" height="56"/>
+    </resources>
 </document>
