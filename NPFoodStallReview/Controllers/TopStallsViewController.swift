@@ -9,30 +9,22 @@
 import Foundation
 import UIKit
 import MapKit
+import Cosmos
 import GoogleSignIn
 
-class tStallCell : UITableViewCell{
-
-    @IBOutlet weak var testSwitch: UISwitch!
-    
-    @IBOutlet weak var testLbl: UILabel!
-    
-    
-    @IBAction func testSw(_ sender: Any) {
-    if testSwitch.isOn {
-        testLbl.text = "ON"
-    }
-    else {
-        testLbl.text = "OFF"
-    }
-    }
-}
-
 class TopStallsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
+    
+    var canteenController: CanteenController = CanteenController();
+    var stallController: StallController = StallController();
+    var feedbackController: FeedbackController = FeedbackController();
+
+    var stallList:[Stall] = []
     
     @IBOutlet weak var mapView: MKMapView!
     var cameraBoundary : MKMapView.CameraBoundary?
     var currentCoordinate : CLLocationCoordinate2D?
+    
+    @IBOutlet weak var TopStallTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +35,7 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         for annotation in AppDelegate.annotationsList {
             mapView.addAnnotation(annotation)
         }
+        TopStallTableView.delegate = self;
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,20 +45,45 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         for annotation in AppDelegate.annotationsList {
             mapView.addAnnotation(annotation)
         }
+        stallList.removeAll()
+        TopStallTableView.reloadData()
+        
+        DispatchQueue.global(qos: .utility).async {
+            
+            let semaphore = DispatchSemaphore(value: 0);
+            do {
+                let stalls = try self.stallController.retrieveStalls()
+                self.stallList = stalls
+                semaphore.signal()
+            } catch {
+                print(error);
+                return;
+            }
+            semaphore.wait()
+            DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
+                    self.TopStallTableView.reloadData();
+                    print(self.stallList.count)
+            }
+        }
     }
-    
+
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         AppDelegate.currentCoordinate = mapView.region
         AppDelegate.cameraBoundary = mapView.cameraBoundary
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10;
+        return stallList.count;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! tStallCell
-    
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! TopStallCell
+        let stall = stallList[indexPath.row]
+        cell.cellDisplay(stall: stall)
         return cell
     }
     
@@ -105,3 +123,4 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         present(alert, animated: true, completion: nil)
     }
 }
+
