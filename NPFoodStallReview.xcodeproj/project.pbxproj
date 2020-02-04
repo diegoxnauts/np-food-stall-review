@@ -16,6 +16,7 @@
 		8CEA207123E092FF008685CD /* FeedbacksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CEA207023E092FF008685CD /* FeedbacksViewController.swift */; };
 		8CEA207423E09595008685CD /* MainAddUpdateFeedback.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8CEA207223E09595008685CD /* MainAddUpdateFeedback.storyboard */; };
 		8CF83BE623D96CC8007AD0B9 /* ItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF83BE523D96CC8007AD0B9 /* ItemController.swift */; };
+		B8184C6F23E9485300DE7645 /* TopStallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8184C6E23E9485300DE7645 /* TopStallCell.swift */; };
 		B89E1C7023DA206C0074FAE8 /* MainTop.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6C23DA206C0074FAE8 /* MainTop.storyboard */; };
 		B89E1C7123DA206C0074FAE8 /* MainSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C6E23DA206C0074FAE8 /* MainSearch.storyboard */; };
 		B89E1C7423DA36490074FAE8 /* MainCanteen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B89E1C7223DA36490074FAE8 /* MainCanteen.storyboard */; };
@@ -54,6 +55,7 @@
 		8CEA207023E092FF008685CD /* FeedbacksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbacksViewController.swift; sourceTree = "<group>"; };
 		8CEA207323E09595008685CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainAddUpdateFeedback.storyboard; sourceTree = "<group>"; };
 		8CF83BE523D96CC8007AD0B9 /* ItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemController.swift; sourceTree = "<group>"; };
+		B8184C6E23E9485300DE7645 /* TopStallCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStallCell.swift; sourceTree = "<group>"; };
 		B89E1C6D23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainTop.storyboard; sourceTree = "<group>"; };
 		B89E1C6F23DA206C0074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainSearch.storyboard; sourceTree = "<group>"; };
 		B89E1C7323DA36490074FAE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainCanteen.storyboard; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				F314FC4E23E04DA7000BE91A /* StallCell.swift */,
 				F314FC5423E051C5000BE91A /* CanteenHeaderCell.swift */,
 				F3B49F3B23E18D54003E203B /* ItemCell.swift */,
+				B8184C6E23E9485300DE7645 /* TopStallCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C527A6F23E0135300E063AD /* AddUpdateFeedbackViewController.swift in Sources */,
+				B8184C6F23E9485300DE7645 /* TopStallCell.swift in Sources */,
 				F3DEBE2023D43449005227BF /* ViewController.swift in Sources */,
 				F3B49F3A23E15A78003E203B /* ShowItemViewController.swift in Sources */,
 				F3DEBE1C23D43449005227BF /* AppDelegate.swift in Sources */,
