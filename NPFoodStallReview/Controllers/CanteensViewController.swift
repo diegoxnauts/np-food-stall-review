@@ -106,7 +106,6 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
         
         // So tableview would refresh the data and not add duplicate items
         canteenList.removeAll();
-        expandableCanteenList.removeAll();
         self.canteensTableView.reloadData();
         
         // Indicate fetching is ongoing
@@ -169,7 +168,18 @@ class CanteensViewController: UIViewController, UITableViewDelegate, UITableView
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
                 AppDelegate.annotationsList = []
                 for canteen in self.canteenList {
-                    self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
+                    var isCanteenAdded = false;
+                    for index in self.expandableCanteenList.indices {
+                        var expandableCanteen = self.expandableCanteenList[index];
+                        if (expandableCanteen.canteen.canteenId == canteen.canteenId) {
+                            expandableCanteen.canteen = canteen;
+                            isCanteenAdded = true;
+                        }
+                    }
+                    if (!isCanteenAdded) {
+                        self.expandableCanteenList.append(ExpandableCanteen(isExpanded: false, canteen: canteen))
+                    }
+                    
                     let annotation = MKPointAnnotation()  // <-- new instance here
                     let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
                     annotation.coordinate = canteenLocation
