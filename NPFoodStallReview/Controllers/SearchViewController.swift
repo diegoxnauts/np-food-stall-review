@@ -155,6 +155,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         let alert = UIAlertController(title: "Log In", message: "Would you like to log in?", preferredStyle: .alert)
         let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            GIDSignIn.sharedInstance()?.presentingViewController = self
             GIDSignIn.sharedInstance()?.signIn()
         })
         
@@ -168,6 +169,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         let alert = UIAlertController(title: "Log Out", message: "Would you like to log out?", preferredStyle: .alert)
         let action = UIAlertAction(title: "No", style: .cancel, handler: nil)
         let action2 = UIAlertAction(title: "Yes", style: .default, handler: { _ in
+            GIDSignIn.sharedInstance()?.presentingViewController = self
             GIDSignIn.sharedInstance()?.signOut()
             self.loginBtn.isHidden = false
             self.logoutBtn.isHidden = true
