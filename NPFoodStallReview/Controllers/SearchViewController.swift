@@ -18,6 +18,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
     
     var searchController = UISearchController()
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     var canteenController: CanteenController = CanteenController();
     var stallController: StallController = StallController();
     var feedbackController: FeedbackController = FeedbackController();
@@ -25,6 +26,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
 
     var itemsList:[Item] = []
     var curItemList:[Item] = []
+    var canteenList:[Canteen] = []
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var loginBtn: UIButton!
@@ -57,8 +59,11 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
         searchController = UISearchController(searchResultsController: nil) //Pass to the same view
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false //Interact with tableview
+        searchController.definesPresentationContext = true
         searchContainerView.addSubview(searchController.searchBar) //add searchbar
         searchController.searchBar.delegate = self
+        searchTableView.keyboardDismissMode = .onDrag //dismiss keyboard on tableview movement
+        
     }
     
     
@@ -80,6 +85,9 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
             logoutBtn.isHidden = true
             loginBtn.isHidden = false
         }
+        if itemsList.count == 0{
+            loading.startAnimating()
+        }
         itemsList.removeAll()
         
         DispatchQueue.global(qos: .utility).async {
@@ -95,17 +103,44 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
             }
             semaphore.wait();
             
+            do {
+                let canteens = try self.canteenController.retrieveCanteens()
+                self.canteenList = canteens
+                semaphore.signal()
+            } catch {
+                print(error);
+                return;
+            }
+            semaphore.wait();
+            
+            // Fetch Stalls for each canteen
+            do {
+                for canteen in self.canteenList {
+                    let stalls = try self.stallController.retrieveStallsByCanteenId(canteenID: canteen.canteenId)
+                    canteen.stalls = stalls
+                }
+                semaphore.signal()
+            } catch {
+                print(error);
+                return;
+            }
+            semaphore.wait()
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
-                
+                for canteen in self.canteenList{
+                    let annotation = MKPointAnnotation()  
+                    let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+                    annotation.coordinate = canteenLocation
+                    annotation.title = "\(canteen.name)"
+                    self.mapView.addAnnotation(annotation)
+                    AppDelegate.annotationsList.append(annotation)
+                }
+                self.loading.stopAnimating()
                 self.curItemList = self.itemsList
                 self.searchTableView.reloadData();
                 print(self.itemsList.count)
             }
         }
         
-    }
-    @IBAction func refreshBtn(_ sender: Any) {
-        restore()
     }
     func filterCurrent(search: String){
         if search.count > 0{
@@ -119,6 +154,7 @@ class SearchViewController: UIViewController, MKMapViewDelegate {
     }
     func restore(){
         curItemList = itemsList
+        print("reloaded data")
         searchTableView.reloadData()
     }
     
@@ -199,9 +235,7 @@ extension SearchViewController: UISearchBarDelegate {
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchController.isActive = false
-        if let search = searchBar.text, !search.isEmpty{
-            restore()
-        }
+        restore()
     }
 }
 
@@ -212,7 +246,60 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! searchCell
-        cell.itemTitle?.text = curItemList[indexPath.row].name
+        
+        
+        curItemList.sort { (a, b) -> Bool in
+            var aLikes = 0;
+            var bLikes = 0;
+            for (_, value) in a.userWhoLike {
+                if (value) {
+                    aLikes += 1;
+                }
+            }
+            for (_, value) in b.userWhoLike {
+                if (value) {
+                    bLikes += 1;
+                }
+            }
+            return aLikes > bLikes;
+        }
+        
+        let curItem = curItemList[indexPath.row]
+
+        var count = 0
+        for (_, value) in curItem.userWhoLike {
+            if (value) {
+                count += 1;
+            }
+        }
+        cell.likeCount.text = "\(count) Likes";
+        
+        for canteen in canteenList{
+            for stall in canteen.stalls{
+                if stall.stallId == curItem.stallId{
+                    cell.stallTitle.text = "\(stall.name) (\(canteen.name))"
+                }
+            }
+        }
+        
+        cell.itemTitle?.text = curItem.name
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let item = curItemList[indexPath.row]
+        for canteen in canteenList{
+            for stall in canteen.stalls{
+                if canteen.canteenId == stall.canteenId && item.stallId == stall.stallId{
+                    let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
+                    let region = MKCoordinateRegion(center: canteenLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+                    mapView.setRegion(region, animated: true)
+                    print(item.name)
+                    print(stall.name)
+                    print(canteen.name)
+                }
+            }
+        }
+    }
 }
+
