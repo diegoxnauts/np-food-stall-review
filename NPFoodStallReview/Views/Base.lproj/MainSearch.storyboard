@@ -36,27 +36,53 @@
                                 <rect key="frame" x="0.0" y="449" width="414" height="364"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CanteenCell" id="owf-79-AAe" customClass="searchCell" customModule="NPFoodStallReview" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CanteenCell" rowHeight="71" id="owf-79-AAe" customClass="searchCell" customModule="NPFoodStallReview" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="71"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="owf-79-AAe" id="LXx-Tb-t5N">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="leT-yQ-OCp">
-                                                    <rect key="frame" x="50" y="11" width="244" height="21"/>
+                                                    <rect key="frame" x="59" y="16" width="244" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dinner" translatesAutoresizingMaskIntoConstraints="NO" id="hqJ-6y-scD">
+                                                    <rect key="frame" x="10" y="7" width="38" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeo-vv-1Qf">
+                                                    <rect key="frame" x="59" y="45" width="244" height="14.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hand.thumbsup.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZiD-sc-VkN">
+                                                    <rect key="frame" x="346" y="6.5" width="22" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xx Likes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OzQ-ga-Qcb">
+                                                    <rect key="frame" x="331" y="28" width="52" height="14"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="leT-yQ-OCp" firstAttribute="leading" secondItem="LXx-Tb-t5N" secondAttribute="leadingMargin" constant="30" id="U9s-aT-O02"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="leT-yQ-OCp" secondAttribute="trailing" constant="100" id="pF6-9p-Ojj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zeo-vv-1Qf" secondAttribute="trailing" constant="91" id="0ZS-o6-lCn"/>
+                                                <constraint firstItem="leT-yQ-OCp" firstAttribute="leading" secondItem="LXx-Tb-t5N" secondAttribute="leadingMargin" constant="39" id="U9s-aT-O02"/>
+                                                <constraint firstItem="Zeo-vv-1Qf" firstAttribute="top" secondItem="leT-yQ-OCp" secondAttribute="bottom" constant="5" id="VI2-0i-rRj"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="leT-yQ-OCp" secondAttribute="trailing" constant="91" id="pF6-9p-Ojj"/>
+                                                <constraint firstItem="Zeo-vv-1Qf" firstAttribute="leading" secondItem="LXx-Tb-t5N" secondAttribute="leadingMargin" constant="39" id="rCA-NX-rxE"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="itemTitle" destination="leT-yQ-OCp" id="Fkp-ia-Jq3"/>
+                                            <outlet property="likeCount" destination="OzQ-ga-Qcb" id="fM9-V2-iGk"/>
+                                            <outlet property="stallTitle" destination="Zeo-vv-1Qf" id="bVp-Ya-VsT"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -90,14 +116,10 @@
                                     <constraint firstAttribute="height" constant="50" id="fPN-MH-txl"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HvG-DW-ClF">
-                                <rect key="frame" x="388" y="360" width="20" height="22"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="xOR-t7-QeE">
+                                <rect key="frame" x="244" y="361" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="arrow.clockwise" catalog="system"/>
-                                <connections>
-                                    <action selector="refreshBtn:" destination="bXA-8V-8L1" eventType="touchUpInside" id="dOc-Nt-RMN"/>
-                                </connections>
-                            </button>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -124,6 +146,7 @@
                     <tabBarItem key="tabBarItem" title="Search" id="DdF-Fj-FqV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="loading" destination="xOR-t7-QeE" id="eqT-Do-YlT"/>
                         <outlet property="loginBtn" destination="WHI-7b-U4S" id="qL5-O6-KgH"/>
                         <outlet property="logoutBtn" destination="XoP-YP-cLy" id="NnL-iT-zpL"/>
                         <outlet property="mapView" destination="Jea-Wb-Z28" id="pze-6C-Vd8"/>
@@ -137,7 +160,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.clockwise" catalog="system" width="56" height="64"/>
+        <image name="dinner" width="512" height="512"/>
+        <image name="hand.thumbsup.fill" catalog="system" width="64" height="62"/>
         <image name="login" width="512" height="512"/>
         <image name="loginlogout" width="512" height="512"/>
     </resources>

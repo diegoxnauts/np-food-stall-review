@@ -14,13 +14,15 @@ import GoogleSignIn
 
 class TopStallsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, MKMapViewDelegate {
     
-    var canteenController: CanteenController = CanteenController();
-    var stallController: StallController = StallController();
-    var feedbackController: FeedbackController = FeedbackController();
+    var canteenController: CanteenController = CanteenController()
+    var stallController: StallController = StallController()
+    var feedbackController: FeedbackController = FeedbackController()
 
+    
     var stallList:[Stall] = []
     var canteenList:[Canteen] = []
     
+    @IBOutlet weak var loading: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     var cameraBoundary : MKMapView.CameraBoundary?
     var currentCoordinate : CLLocationCoordinate2D?
@@ -35,7 +37,7 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
         mapView.delegate = self
         mapView.setRegion(AppDelegate.currentCoordinate!, animated: false)
         mapView.setCameraBoundary(AppDelegate.cameraBoundary, animated: false)
-        mapView.showsUserLocation = true;
+        mapView.showsUserLocation = true
         for annotation in AppDelegate.annotationsList {
             mapView.addAnnotation(annotation)
         }
@@ -50,9 +52,9 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
             loginBtn.isHidden = false
         }
         
-        createObserver();
-        TopStallTableView.delegate = self;
-        mapView.showsUserLocation = true;
+        createObserver()
+        TopStallTableView.delegate = self
+        mapView.showsUserLocation = true
         mapView.delegate = self
         AppDelegate.currentCoordinate = mapView.region
         AppDelegate.cameraBoundary = mapView.cameraBoundary
@@ -79,67 +81,70 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
             logoutBtn.isHidden = true
             loginBtn.isHidden = false
         }
+        if stallList.count == 0 {
+            loading.startAnimating()
+        }
         stallList.removeAll()
         
         DispatchQueue.global(qos: .utility).async {
             
-            let semaphore = DispatchSemaphore(value: 0);
+            let semaphore = DispatchSemaphore(value: 0)
             do {
                 let canteens = try self.canteenController.retrieveCanteens()
                 self.canteenList = canteens
                 semaphore.signal()
             } catch {
-                print(error);
-                return;
+                print(error)
+                return
             }
-            semaphore.wait();
+            semaphore.wait()
             do {
                 let stalls = try self.stallController.retrieveStalls()
                 self.stallList = stalls
                 semaphore.signal()
             } catch {
-                print(error);
-                return;
+                print(error)
+                return
             }
             semaphore.wait()
             // Fetch feedback for each stalls, derive stall rating value
             do {
                 for stall in self.stallList {
-                    var rating:Double = 0.0;
+                    var rating:Double = 0.0
                     let feedbacks = try self.feedbackController.retrieveFeedbacksByStallId(stallId: stall.stallId)
                     stall.feedbacks = feedbacks
                     for feedback in feedbacks {
-                        rating += feedback.rating!;
+                        rating += feedback.rating!
                     }
                     if (feedbacks.count > 0) {
-                        let x = rating / Double(feedbacks.count); //round it to closest .5
-                        rating = round(x * 2.0) / 2.0;
+                        let x = rating / Double(feedbacks.count) //round it to closest .5
+                        rating = round(x * 2.0) / 2.0
                     }
-                    stall.rating = rating;
+                    stall.rating = rating
                 }
 
-            semaphore.signal();
+            semaphore.signal()
             }
              catch {
-                print(error);
-                return;
+                print(error)
+                return
             }
             semaphore.wait()
             DispatchQueue.main.async { // this line goes back to the main thread which is the inital thread to communicate with UI stuff
                 
                 for canteen in self.canteenList{
-                    let annotation = MKPointAnnotation()  // <-- new instance here
+                    let annotation = MKPointAnnotation()  
                     let canteenLocation = CLLocationCoordinate2D(latitude: canteen.latitude, longitude: canteen.longitude)
                     annotation.coordinate = canteenLocation
                     annotation.title = "\(canteen.name)"
                     self.mapView.addAnnotation(annotation)
                     AppDelegate.annotationsList.append(annotation)
                 }
-                self.TopStallTableView.reloadData();
+                self.loading.stopAnimating()
+                self.TopStallTableView.reloadData()
                 print(self.stallList.count)
             }
         }
-        
     }
     
     deinit {
@@ -157,16 +162,16 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return stallList.count;
+        return stallList.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 75;
+        return 75
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CanteenCell", for: indexPath) as! TopStallCell
-       self.stallList.sort{ //sort ratings and feedback in descending order
+        self.stallList.sort{ //sort ratings and feedback in descending order
            if $0.rating != nil{
                if $0.rating! != $1.rating!{ //check ratings first
                    return $0.rating! > $1.rating! //sort ratings
@@ -176,7 +181,8 @@ class TopStallsViewController: UIViewController, UITableViewDelegate, UITableVie
                }
            }
            return false
-       }
+        }
+        
         let stall = stallList[indexPath.row]
         for canteen in canteenList{
             if canteen.canteenId == stall.canteenId{

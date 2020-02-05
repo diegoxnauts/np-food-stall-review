@@ -13,6 +13,9 @@ class searchCell:UITableViewCell{
     
     @IBOutlet weak var itemTitle: UILabel!
     
+    @IBOutlet weak var stallTitle: UILabel!
     
+    @IBOutlet weak var likeCount: UILabel!
     
+
 }

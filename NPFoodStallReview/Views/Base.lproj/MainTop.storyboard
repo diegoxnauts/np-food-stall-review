@@ -45,13 +45,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vFu-0e-CRN">
-                                                    <rect key="frame" x="50" y="14" width="144" height="21"/>
+                                                    <rect key="frame" x="59" y="14" width="144" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8lx-ra-aGG" customClass="CosmosView" customModule="Cosmos">
-                                                    <rect key="frame" x="50" y="46" width="120" height="20"/>
+                                                    <rect key="frame" x="59" y="46" width="120" height="20"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="totalStars">
@@ -64,13 +64,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oKk-re-GbY">
-                                                    <rect key="frame" x="50" y="26" width="144" height="15"/>
+                                                    <rect key="frame" x="59" y="26" width="144" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baf-fM-blM">
-                                                    <rect key="frame" x="175" y="51" width="31" height="15"/>
+                                                    <rect key="frame" x="184" y="51" width="31" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -93,17 +93,21 @@
                                                         <segue destination="RYT-rk-nJ3" kind="show" identifier="ToViewItemPage" id="Ksn-yb-uF9"/>
                                                     </connections>
                                                 </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fork" translatesAutoresizingMaskIntoConstraints="NO" id="7Ht-Ea-KVI">
+                                                    <rect key="frame" x="10" y="23" width="38" height="29"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="baf-fM-blM" firstAttribute="leading" secondItem="8lx-ra-aGG" secondAttribute="trailing" constant="5" id="8wA-Hc-luR"/>
-                                                <constraint firstItem="oKk-re-GbY" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leadingMargin" constant="30" id="A1t-xW-XLh"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="oKk-re-GbY" secondAttribute="trailing" constant="200" id="ApT-jn-O6R"/>
+                                                <constraint firstItem="oKk-re-GbY" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leadingMargin" constant="39" id="A1t-xW-XLh"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oKk-re-GbY" secondAttribute="trailing" constant="191" id="ApT-jn-O6R"/>
                                                 <constraint firstItem="oKk-re-GbY" firstAttribute="top" secondItem="pF0-LT-UGm" secondAttribute="topMargin" constant="15" id="Ih7-Pb-Olm"/>
                                                 <constraint firstItem="8lx-ra-aGG" firstAttribute="top" secondItem="oKk-re-GbY" secondAttribute="bottom" constant="5" id="fkG-hk-HpT"/>
-                                                <constraint firstItem="vFu-0e-CRN" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leadingMargin" constant="30" id="hfi-Ir-QGx"/>
+                                                <constraint firstItem="vFu-0e-CRN" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leadingMargin" constant="39" id="hfi-Ir-QGx"/>
                                                 <constraint firstItem="baf-fM-blM" firstAttribute="top" secondItem="oKk-re-GbY" secondAttribute="bottom" constant="10" id="itA-t7-vXg"/>
-                                                <constraint firstItem="8lx-ra-aGG" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leading" constant="50" id="tAZ-RK-v2L"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vFu-0e-CRN" secondAttribute="trailing" constant="200" id="xX7-XR-jHl"/>
+                                                <constraint firstItem="8lx-ra-aGG" firstAttribute="leading" secondItem="pF0-LT-UGm" secondAttribute="leading" constant="59" id="tAZ-RK-v2L"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vFu-0e-CRN" secondAttribute="trailing" constant="191" id="xX7-XR-jHl"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -139,6 +143,10 @@
                                     <action selector="loginToGoogleBtn:" destination="0Cg-Tc-rCQ" eventType="touchUpInside" id="hyz-hx-9ct"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="FQb-xE-z6D">
+                                <rect key="frame" x="254" y="369" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -163,6 +171,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TopStallTableView" destination="ruw-LU-ltq" id="jys-e5-ZCF"/>
+                        <outlet property="loading" destination="FQb-xE-z6D" id="pnM-3d-PVD"/>
                         <outlet property="loginBtn" destination="0xU-EZ-w80" id="Nlc-N9-a3x"/>
                         <outlet property="logoutBtn" destination="2mT-e9-ezj" id="mK3-or-YIU"/>
                         <outlet property="mapView" destination="UH3-Zd-ta8" id="cl3-VN-s7o"/>
@@ -194,6 +203,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fork" width="512" height="511"/>
         <image name="login" width="512" height="512"/>
         <image name="loginlogout" width="512" height="512"/>
     </resources>
