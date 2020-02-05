@@ -54,7 +54,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zeo-vv-1Qf">
-                                                    <rect key="frame" x="59" y="45" width="244" height="14.5"/>
+                                                    <rect key="frame" x="59" y="45" width="335" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -72,9 +72,9 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Zeo-vv-1Qf" secondAttribute="trailing" constant="91" id="0ZS-o6-lCn"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Zeo-vv-1Qf" secondAttribute="trailing" id="0ZS-o6-lCn"/>
                                                 <constraint firstItem="leT-yQ-OCp" firstAttribute="leading" secondItem="LXx-Tb-t5N" secondAttribute="leadingMargin" constant="39" id="U9s-aT-O02"/>
-                                                <constraint firstItem="Zeo-vv-1Qf" firstAttribute="top" secondItem="leT-yQ-OCp" secondAttribute="bottom" constant="5" id="VI2-0i-rRj"/>
+                                                <constraint firstItem="Zeo-vv-1Qf" firstAttribute="top" secondItem="leT-yQ-OCp" secondAttribute="bottom" constant="3" id="VI2-0i-rRj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="leT-yQ-OCp" secondAttribute="trailing" constant="91" id="pF6-9p-Ojj"/>
                                                 <constraint firstItem="Zeo-vv-1Qf" firstAttribute="leading" secondItem="LXx-Tb-t5N" secondAttribute="leadingMargin" constant="39" id="rCA-NX-rxE"/>
                                             </constraints>
